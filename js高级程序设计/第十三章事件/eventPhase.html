@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;}
+input{width:100px;height:30px;}
+</style>
+
+</head>
+
+<body>
+	<a id="link" href="http://www.baidu.com">取消默认的链接导航</a>
+	<input type="button" id="myBtn" onclick="console.log(event)"/>
+    <script>
+
+    	var btn=document.getElementById('myBtn');
+		
+		btn.onclick=function(event){
+			console.log(event.eventPhase);//2		
+		};
+		
+		document.body.addEventListener('click', function(event){
+			console.log(event.eventPhase);//1
+		}, true);
+		
+		document.body.onclick=function(event){
+			console.log(event.eventPhase);//3
+		};
+		
+		
+
+		
+    </script>
+</body>
+</html>

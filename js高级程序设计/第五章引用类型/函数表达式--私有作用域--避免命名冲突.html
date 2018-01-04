@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+	function outputNumber(count){
+		//在for循环外部插入一个私有作用域：即是这个匿名函数
+		(function(){
+			
+			for(var i=0;i<count;i++){
+				console.log(i);//0 1 2 3 4
+			};	
+			console.log(i);//5
+		})();
+		console.log(i)// i is not defined在匿名函数中定义的任何变量，都会在执行结束时被销毁
+	};
+	
+	outputNumber(5);
+</script>
+</head>
+
+<body>
+</body>
+</html>

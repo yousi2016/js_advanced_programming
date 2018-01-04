@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	var person1={
+		
+		toLocaleString:function(){
+			return '111';	
+		},
+		
+		toString:function(){
+			return '222';	
+		}
+	};
+	
+	var person2={
+		
+		toLocaleString:function(){
+			return '333';	
+		},
+		
+		toString:function(){
+			return '444';	
+		}
+	};
+	
+	var people=[person1, person2];
+	alert(people);//222, 444;
+	console.log(people.toString());//222,444
+	console.log(people.toLocaleString());//111,333
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;}
+input{width:100px;height:30px;}
+</style>
+
+</head>
+
+<body>
+	<a id="link" href="http://www.baidu.com">取消默认的链接导航</a>
+	<input type="button" id="myBtn" onclick="console.log(event)"/>
+    <script>
+
+    	var btn=document.getElementById('myBtn');
+		
+		var link=document.getElementById('link');
+		var handler=function(event){
+				//只有将函数指定给事件作为事件处理程序以后，event才是一个对象
+				console.log(event.cancelable);//默认是true
+				switch(event.type){
+					case 'click':
+						alert('Clicked');	
+					case 'mouseover':
+						event.target.style.backgroundColor='blue';
+					case 'mouseout':
+						alert(88)
+				};	
+		};
+
+		btn.onclick=handler;
+		btn.onmouseover=handler;
+		btn.onmouseout=handler;
+		
+		link.onclick=function(event){
+			event.cancelable=false;//cancelable是只读的不能修改
+			console.log(event.cancelable);
+			event.preventDefault();
+		};
+		
+		
+
+		
+    </script>
+</body>
+</html>

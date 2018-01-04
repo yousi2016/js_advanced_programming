@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+	//ECMAScript只支持实现继承，而且其主要是依靠原型链来实现的
+	//原型链的基本思想：利用原型让一个引用类型继承另一个引用类型的属性和方法。
+	function Person(name){
+		
+		this.name=name;	
+		
+	};
+	
+	Person.prototype.showName=function(){
+		
+		return this.name;
+		
+	};
+	
+	/*Car.prototype.showName=function(){
+		
+		return false;
+		
+	};*/
+	//让Car继承Person(就是让Car的prototype属性指针连到Person的实例属性[[Prototype]]指针上面)这样就练成一条线了
+	//Car.prototype=new Person('yousi');
+	
+	function Car(color){
+		
+		Person.call(this, 'blue');
+		
+		this.color=color;	
+		
+	};
+	
+	Car.prototype.showColor=function(){
+		
+		return this.color;
+		
+	};
+	
+	
+	
+	var instance=new Car('green');
+	
+	
+	console.log(instance.name);//yousi
+	
+	
+	
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

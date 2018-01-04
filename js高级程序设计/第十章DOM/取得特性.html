@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+
+</style>
+</head>
+
+<body>
+	<div id="myDiv" class="bd" title="Body text" lang="en" dir="ltr" my_special_attribute='hello!' onclick='alert(888);' style="width:100px;height:100px;background:blue;"></div>
+    <script>
+    	var div=document.getElementById('myDiv');
+		
+		//获取特性值
+		/*console.log(div.getAttribute('id'));
+		console.log(div.getAttribute('class'));//IE7-是null
+		console.log(div.getAttribute('title'));
+		console.log(div.getAttribute('lang'));
+		console.log(div.getAttribute('dir'));*/
+		console.log(div.getAttribute('my_special_attribute'));//hello!全都兼容
+		
+		//自定义特性在safari opera chrome firefox IE9+中是undefined
+		//在IE8-才会将特性以属性的形式添加到DOM中
+		console.log(div.my_special_attribute); 
+		
+		console.log(div.style);
+		console.log(div.getAttribute('style'));//width:100px;height:100px;background:blue;
+		console.log(div.getAttribute('onclick'));//alert(888);IE7-返回function onclick(){alert(888);}
+		
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+if(ieVer >= 6){
+	console.log('ie6以上');
+}
+//识别呈现引擎
+var client=function(){
+	var engine={
+		//呈现引擎
+		ie:1,
+		gecko:1.6,
+		webkit:0,
+		khtml:0,
+		opera:0,
+		//具体版本号
+		ver:null
+			
+	};
+	
+	//在此检测呈现引擎、平台和设备
+	return {
+		engine:engine	
+	}
+}();	
+
+
+//IE Firefox
+if(client.engine.ie){//如果是ie，client.ie的值应该大于0；
+	//针对ie的代码
+	console.log('ie');
+}else if(client.engine.gecko > 1.5){
+	if(client.engine.ver == '1.8.1'){
+		//针对这个版本执行某些操作	
+		console.log(Firefox);
+	}	
+};
+
+//opera
+if(window.opera){
+	
+	engine.ver=window.opera.version();
+	
+	engine.opera=parseFloat(engine.ver);	
+}
+
+//webkit
+var ua=navigator.userAgent;
+
+if(window.opera){
+	
+	engine.ver = window.oprea.version();
+	
+	engine.opera = parseFloat(engine.ver);	
+	
+}else if(/AppleWebkit\/(\S+)/.test(ua)){
+	engin.ver=RegExp['$1'];	
+	engin.webkit=parseFloat(engin.ver);
+};
+
+//kHTML
+var ua=navigator.userAgent;
+
+if(window.opera){
+	
+	engine.ver = window.oprea.version();
+	
+	engine.opera = parseFloat(engine.ver);	
+	
+}else if(/AppleWebkit\/(\S+)/.test(ua)){
+	engin.ver=RegExp['$1'];	
+	engin.webkit=parseFloat(engin.ver);
+}else if(/KHTML\/(\S+)/.test(ua) || /konqueror\/([^;]+)/.test(ua)){
+	engine.ver=RegExp['$1'];	
+	engine.khtml=parseFloat(engine.ver);
+};
+
+//Gecko
+var ua=navigator.userAgent;
+
+if(window.opera){
+	
+	engine.ver = window.oprea.version();
+	
+	engine.opera = parseFloat(engine.ver);	
+	
+}else if(/AppleWebkit\/(\S+)/.test(ua)){
+	engin.ver=RegExp['$1'];	
+	engin.webkit=parseFloat(engin.ver);
+}else if(/KHTML\/(\S+)/.test(ua) || /konqueror\/([^;]+)/.test(ua)){
+	engine.ver=RegExp['$1'];	
+	engine.khtml=parseFloat(engine.ver);
+}else if(/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)){
+	engin.ver=RegExp['$1'];
+	engin.gecko=parseFloat(engine.ver);
+};
+
+//IE
+var ua=navigator.userAgent;
+
+if(window.opera){
+	
+	engine.ver = window.oprea.version();
+	
+	engine.opera = parseFloat(engine.ver);	
+	
+}else if(/AppleWebkit\/(\S+)/.test(ua)){
+	engin.ver=RegExp['$1'];	
+	engin.webkit=parseFloat(engin.ver);
+}else if(/KHTML\/(\S+)/.test(ua) || /konqueror\/([^;]+)/.test(ua)){
+	engine.ver=RegExp['$1'];	
+	engine.khtml=parseFloat(engine.ver);
+}else if(/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)){
+	engin.ver=RegExp['$1'];
+	engin.gecko=parseFloat(engine.ver);
+}else if(/MSIE ([^;]+)/.test(ua)){
+	engine.ver=RegExp['$1'];
+	engin.ie=parseFloat(engine.ver);
+}
+</script>
+	
+
+
+</head>
+
+<body>
+    <div id="dom">8888888</div>
+</body>
+
+</html>
+ 

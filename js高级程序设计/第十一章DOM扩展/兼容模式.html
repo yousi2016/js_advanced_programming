@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+button{width:20px;height:20px;}
+</style>
+<script>
+	window.onload=function(){
+		if(document.readyState == 'complete'){
+			
+			console.log('加载完成！');
+			console.log(document.compatMode);
+			if(document.compatMode == 'CSS1Compat'){
+				console.log('标准模式');
+			}else{
+				console.log('混杂模式');	
+			}
+		}
+	};
+</script>
+</head>
+
+<body>
+	<button id="myButton"></button>
+    
+    
+</body>
+</html>

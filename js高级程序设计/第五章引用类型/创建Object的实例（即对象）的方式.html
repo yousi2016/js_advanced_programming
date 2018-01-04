@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	//第一种
+	var person=new 	Object();
+	
+	person.name='xiaoming';
+	person.age=18;
+	//第二种对象字面量表示法
+	var person={
+		name:'xiaoming',
+		age:18	
+	};
+	//对象字面量是对象定义的一种简写形式，目的是简化创建包含大量属性的对象的过程
+	
+	console.log(person['name']);
+	console.log(person.name);
+	
+	var propertyName='name';
+	
+	console.log(person[propertyName]);//方括号语法的主要优点：可以通过变量来访问属性
+	console.log(person['first name']);
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>

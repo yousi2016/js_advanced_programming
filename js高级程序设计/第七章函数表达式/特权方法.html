@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//我们把有权访问私有变量和私有函数的公有方法叫做：特权方法
+function MyObject(){
+	
+	//私有变量
+	var privateVariable=10;
+	
+	//私有函数
+	function privateFunction(){
+		//return false;	
+		console.log(8);
+	};	
+	
+	//特权方法
+	this.publicMethod=function(){
+		
+		privateVariable++;
+		
+		return privateFunction();	
+	};
+};
+var instance=new MyObject();
+
+instance.publicMethod();
+
+//利用私有和特权成员，可以用来隐藏那些不应该被修改的数据
+function Person(name){
+	
+	this.getName=function(){
+		return name;
+	};
+	
+	this.setName=function(value){
+		
+		var name=value;	
+		
+		console.log(name);//yousi
+	};
+};
+
+var person=new Person('blue');
+
+console.log(person.getName());//blue
+
+person.setName('yousi');
+
+console.log(person.getName());//yousi
+
+
+
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+ 

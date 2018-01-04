@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+	//window.open('http://www.wrox.com','topFrame', 'height=200');//和用户点击a标签打开的新窗口是一样的
+	//window.open('http://www.wrox.com', 'wroxWindow', 'height=400,width=400,top=100,left=100,resizable=yes,location=yes,menubar=yes');
+	
+	var wroxWin=window.open('http://www.wrox.com', 'wroxWindow', 'height=100,width=100,top=100,left=100,resizable=yes');
+	
+	wroxWin.resizeTo(500,500);
+	
+	wroxWin.moveTo(500,500);
+	
+	//wroxWin.close();//只适应于通过window.open()打开的窗口
+	top.close();
+	console.log(wroxWin.closed)//true;
+</script>
+	
+
+
+</head>
+
+<body>
+	<!--<a href="http://www.wrox.com" target="topFrame">888</a>-->
+    
+</body>
+
+</html>

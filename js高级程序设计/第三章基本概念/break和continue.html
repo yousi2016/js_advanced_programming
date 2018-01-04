@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	
+	var num=0;
+	
+	for(var i=1;i<10;i++){
+		
+		if(i%5==0){
+			//break;	//立即强制退出整个循环
+			continue;	//立即退出当前次循环，接着执行下面的循环
+		}	
+		num++;
+	};
+	//console.log(num);//4
+	console.log(num);//8
+</script>
+</head>
+
+<body>
+</body>
+</html>

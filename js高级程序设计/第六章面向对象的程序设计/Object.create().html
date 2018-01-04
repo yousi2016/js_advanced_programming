@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+//Object.create()传一个参数
+var person={
+	
+		name:'yousi',
+		
+		friends:['john', 'kuli', 'zms']
+		
+	};
+	
+var p1=Object.create(person);
+
+p1.friends.push('111');
+
+console.log(p1.friends);//["john", "kuli", "zms", "111"]
+
+console.log(person.friends);//["john", "kuli", "zms", "111"]
+
+p1.name='blue';
+
+console.log(person.name);//yousi
+
+var p2=Object.create(person);
+
+p2.name='lily';
+
+p2.friends.push('222');
+
+console.log(person.friends);//["john", "kuli", "zms", "111", "222"]
+
+//Object.create()传两个参数
+
+var p3=Object.create(person, {
+		name: {
+			value: 'Greg'
+		}
+	});
+alert(p3.name);//Greg
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

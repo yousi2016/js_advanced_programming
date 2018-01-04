@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+</head>
+
+<body>
+	<div id="myDiv" data-appId='fadsf' data-myname='yousi'></div>
+    <script>
+    	var div=document.getElementById('myDiv');
+		
+		//取得自定义属性的值
+		console.log(div.dataset.appId);
+		console.log(div.dataset.myname);
+		
+		//设置值
+		div.dataset.appId='888';
+		div.dataset.myname='xiaoming';
+		if(div.dataset.myname){
+			console.log(div.dataset.myname);
+		}
+    </script>
+    
+</body>
+</html>

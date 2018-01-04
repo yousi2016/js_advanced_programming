@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<form id="myForm"  method="post" name="form1" action="http://www.baidu.com" novalidate='true'>
+    	<select name="location" id="selLocation" multiple="multiple">
+        	<option value="Sunnyvalue, CA">Sunnyvalue</option>
+            <option value="Los Angeles, CA">Los Angeles</option>
+            <option value="Mountain View, CA">Mountain View</option>
+            <option value="">China</option>
+            <option>Australia</option>
+        </select>
+        
+    </form>
+    <script> 
+	
+		var selectbox=document.forms[0].elements['location'];
+		
+		var selectedIndex=selectbox.selectedIndex;
+		
+		var selectedOption=selectbox.options[selectbox.selectedIndex];
+		
+		//console.log(selectedIndex, selectedOption.text, selectedOption.value);
+		
+		var options=selectbox.options;
+		
+			
+		/*selectbox.onchange=function(){
+			
+			console.log(this.selectedIndex, options[this.selectedIndex].value, options[this.selectedIndex].text);	
+			
+			
+		};*/
+		
+		
+		//自动选中某一项
+		options[1].selected = true;
+		options[2].selected = true;
+		
+		
+		var selectedOptions=getSelectedOptions();
+		
+		var message='';
+		//console.log(selectedOptions);
+		for(var i=0;i<selectedOptions.length;i++){
+			message+=selectedOptions[i].index +' '+ selectedOptions[i].value +' '+ selectedOptions[i].text+'\n';
+		};
+		console.log(message);
+		function getSelectedOptions(){
+			
+			var result=[];
+			
+			for(var i=0;i<options.length;i++){
+
+				if(options[i].selected){
+					
+					result.push(options[i]);
+					
+				}
+			};	
+			
+			return result;
+		};
+		
+		
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{height:2000px;background:green;}
+div{position:absolute;bottom:-100px;width:100px;height:100px;background:blue;}
+</style>
+</head>
+
+<body>
+	<div id="myDiv"></div>
+    <script>
+		var myDiv=document.getElementById('myDiv');
+		//myDiv.scrollIntoViewIfNeeded(true);//true垂直居中false底部
+		document.body.scrollByPages(-1);
+		
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+	//我们创建的每一个函数都有一个prototype（原型）属性，这个属性是一个指针，指向一个对象，而这个属性的用途是包含由特定类型的所有实例共享的属性和方法。如果按照字面意思来理解，那么prototype就是通过构造函数创建的那个对象实例的原型对象。
+	
+	//使用原型对象的好处是可以让所有对象实例共享它所包含的属性和方法，换句话说，不必在构造函数中定义对象实例的属性和方法，而是将这些属性和方法直接添加到原型对象中
+	function Person(){
+		
+	};
+	Person.prototype.name='blue';
+	
+	Person.prototype.age=18;
+	
+	Person.prototype.job='daza';
+	
+	Person.prototype.showName=function(){
+		console.log(this.name);	
+	};
+	
+	Person.prototype.showAge=function(){
+		console.log(this.age);	
+	};
+	
+	var person1=new Person();
+	
+	var person2=new Person();
+	
+	console.log(person1.hasOwnProperty('name'));//false 因为person1没有自己的name属性，这个属性是在person1的指针[[Prototype]]指向的原型对象上面
+	
+	person1.name='dingyousi';
+	
+	console.log(person1.name);//dingyousi
+	console.log(person1.hasOwnProperty('name'));//true;
+	
+	console.log(person2.name);//blue
+	
+	console.log(person2.hasOwnProperty('name'));//false
+	
+	delete person1.name;
+	
+	console.log(person1.name);//blued
+	
+	console.log(person1.hasOwnProperty('name'));//false
+	
+	console.log(Object.getOwnPropertyDescriptor(person1, 'name'));//undefined
+	
+	person1.name=888;
+	
+	console.log(Object.getOwnPropertyDescriptor(person1, 'name'));//来获取描述属性特性的描述符对象。
+	
+	console.log(Object.getOwnPropertyDescriptor(Person, 'name'));
+	
+	//使用for-in循环时，返回的是所有能够通过对象访问的可枚举的属性，其中既包括实例中的属性，也包括存在于原型中的属性。屏蔽了原型中不可枚举属性的实例属性也会在for-in中返回
+	//因为根据规定，所有开发人员定义的属性都是可枚举的--只有在ie8及更早版本中例外。
+	
+	//IE早起版本的实现存在一个bug，及屏蔽不可枚举属性的实例属性不会出现在for-in循环中
+	//eg：
+	var o={
+		toString:function(){
+			return 'my object';	
+		}
+	};
+	
+	for(var prop in o){
+		console.log(prop);//toString ie6, ie7, ie8不支持
+		console.log(o[prop]);	
+		
+		if(prop=='toString'){
+			console.log('find toString');	
+		}
+	};	
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<form id="myForm"  method="post" name="form1" action="http://www.baidu.com" novalidate='true'>
+    	<select name="location" id="selLocation">
+        	<option value="Sunnyvalue, CA">Sunnyvalue</option>
+            <option value="Los Angeles, CA">Los Angeles</option>
+            <option value="Mountain View, CA">Mountain View</option>
+            <option value="">China</option>
+            <option>Australia</option>
+        </select>
+        
+    </form>
+    <script> 
+		var selectBox=document.forms[0].elements['location'];
+		
+		//不推荐
+		/*var text=selectBox.options[0].firstChild.nodeValue;
+		console.log(text);
+		var value=selectBox.options[0].getAttribute('value');*/
+		
+		//推荐(性能高);
+		var options=selectBox.options;
+		
+		var text=selectBox.options[0].text;
+		var value=selectBox.options[0].value;
+		
+		console.log(text, value);
+		
+		for(var i=0;i<options.length;i++){
+			(function(index){
+				options[index].onchange=function(){
+					console.log(this.value);	
+				};
+			})(i);
+		};
+		
+    </script>
+    
+</body>
+</html>

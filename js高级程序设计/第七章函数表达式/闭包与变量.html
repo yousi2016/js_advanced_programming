@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//作用域链的这种配置机制引出了一个值得注意的副作用，即闭包只能取得外部函数中任何变量的最后一个值。别忘了闭包所保存的是整个变量对象，而不是某个特殊的变量
+/*function createFunctions(){
+	for(var i=0;i<10;i++){
+		
+		var result=[];
+		
+		result[i]=function(){
+			
+			return i;	
+		};
+	};
+	
+	return result;
+};*/
+alert(createFunctions());
+
+function createFunctions(){
+	
+	for(var i=0;i<10;i++){
+		
+		var result=[];
+		
+		result[i]=function(){
+			
+			return 
+		}(i);
+	};
+	
+	return result;
+};
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

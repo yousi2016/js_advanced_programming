@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<form id="myForm"  method="post" name="form1" action="http://www.baidu.com" novalidate='true'>
+    	<input type="submit" formnovalidate/>
+        <input type="submit" />
+   		<input type="text" name="username" required  value="11"/>
+        <input type="url"   name="homepage"/>
+        <!--3.数值范围-->
+        <input type="number" min="0" max="100" step="5" name="count1" />
+        <!--4输入模式-->
+        <input type="text" pattern="\d+" name="count2"/>
+    </form>
+    <script> 
+		
+		var eventInstance=new EventFunction();
+		
+		//1.必填字段
+		
+		//检查某个表单字段是否是必填字段
+		var isUsernameRequired = document.forms[0].elements['username'].required;
+		
+		console.log(isUsernameRequired);//true
+		
+		//测试浏览器是否支持required属性
+		var isRequiredSupported = 'required' in document.createElement('input');
+		
+		console.log(isRequiredSupported);//true;
+		
+		//2.其他输入类型
+		
+		//检测浏览器是否支持这些新类型
+		var input=document.createElement('input');
+		
+		input.type='email';
+		
+		input.name='email';
+		
+		
+		document.forms[0].appendChild(input);
+		
+		var isEmailSupported = (input.type == 'email');
+		
+		console.log(isEmailSupported);
+		
+		var pattern=document.forms[0].elements['count2'].pattern;
+		
+		console.log(pattern);
+		
+		var isPatternSupported = 'pattern' in  document.forms[0].elements['count2']
+		
+		console.log(isPatternSupported);
+		
+		//5.检测有效性
+		if(document.forms[0].elements[0].checkValidity()){
+			//字段有效	
+			console.log('字段有效');
+		}else {
+			//字段无效	
+		}
+		
+		//检测整个表单是否有效
+		if(document.forms[0].checkValidity()){
+			console.log('表单有效，继续');	
+		}else{
+			console.log('表单无效');	
+		}
+		
+		//检测表单字段为什么有效或者无效
+		if(input.validity && !input.validity.valid){
+			if(input.validity.valueMissing){
+				console.log('please specify a value');	
+			}else if(input.validity.typeMismatch){
+				console.log('please enter an email address');	
+			}else{
+				console.log('value is invalid');	
+			}	
+		}
+		
+		//6.禁用验证
+		
+    </script>
+    
+</body>
+</html>

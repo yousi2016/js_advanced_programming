@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	//显示了BOM中window对象的所有属性，为了保证最大限度的兼容性，建议在使用for-in循环之前，先检测确认该对象的值不是null或者undefined
+	/*for(var proName in window){
+		console.log(proName);	
+	};*/
+	var person={
+			name:null,
+			age:18
+		}
+	for(var proName in person){
+		console.log(proName)
+		console.log(person[proName])	
+	}
+</script>
+</head>
+
+<body>
+</body>
+</html>

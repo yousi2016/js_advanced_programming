@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+
+//定义函数的方式有两种：一种是函数声明一种是函数表达式
+//1.函数声明 一个重要特征：函数声明提升：执行所有代码前会优先读取函数声明
+function functionName(arg0,arg1,arg2){
+	//函数体	
+};
+console.log(functionName.name);//functionName
+
+//2.函数表达式
+var functionName=function(arg0,arg1,arg2){//匿名函数
+	//函数体	
+};
+console.log(typeof functionName.name)//匿名函数的name属性是空字符串
+
+//函数表达式和其他表达式一样使用前必须先赋值
+//sayHi();//sayHi is not a function
+
+//var sayHi=function(){console.log('Hi');};
+
+
+//sayHi(); sayHi is not defined
+//不要这样做
+/*var condition=true;
+
+if(condition){
+	
+	function sayHi(){console.log(1)};	
+}else{
+	function sayHi(){console.log(2)};	
+}
+sayHi();//ff 1*/
+//可以这样做
+var sayHi;
+var condition=true;
+if(condition){
+	sayHi=function(){console.log(1)};	
+}else{
+	sayHi=function(){console.log(2)};	
+};
+sayHi();//这样才兼容所有浏览器全是1
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

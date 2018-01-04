@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;}
+#myDiv{width:200px;height:200px;border:1px solid #000;}
+input{width:100px;height:30px;}
+</style>
+
+</head>
+
+<body>
+	<div id="myDiv">
+    	<input id="myBtn" type="button" value=""/>
+    </div>
+    <script> 
+		
+		var myDiv=document.getElementById('myDiv');
+		
+		var btn=document.getElementById('myBtn');
+		
+		var isSupported = document.implementation.hasFeature('MouseEvent', '3.0');
+		console.log(isSupported);
+		//用户按下左边右边的鼠标都会得到响应
+		/*document.onmousedown=function(){
+			console.log(888)		
+		};*/
+		
+		btn.onmouseenter=function(){
+			console.log(1);
+		};
+		
+		myDiv.onmouseleave=function(){
+			console.log('离开父元素进入子元素！');
+		};
+		//只有 mouseenter和mouseleave不冒泡，其他都冒泡
+		
+		document.onmousewheel=function(){
+			console.log(999);	
+		};
+    </script>
+</body>
+</html>

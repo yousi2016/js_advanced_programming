@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//'use strict';
+	var person={
+		
+	};
+	
+	Object.defineProperty(person,'name',{
+		configurable:false,
+		writable:false,
+		value:'djkl'	
+	});
+	
+	person.name='88888';
+	console.log(person.name);//属性的值是只读的，不可修改,严格模式下赋值操作将导致错误，非严格模式下赋值操作将被忽略
+	
+	delete person.name;
+	console.log(person.name);
+	
+	Object.defineProperty(person,'name',{
+		configurable:true,//不能重定义属性：名称
+		writable:false,
+		value:'djkl'	
+	});
+	console.log(person.name);
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

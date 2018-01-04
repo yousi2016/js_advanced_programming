@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<form id="myForm" name="form1" action="http://www.baidu.com">
+
+        <textarea rows="20" cols="50">初始初始值初始值初始值初始值初始值值</textarea>
+   
+    </form>
+    <script> 
+		
+		var eventInstance=new EventFunction();
+		
+		var textbox=document.forms[0].elements[0];
+		
+		eventInstance.addHandler(textbox, 'paste', function(event){
+			
+			var charCode=eventInstance.getCharCode(event);
+			
+			//var rel=/\d/;
+			
+			/*if(!rel.test(String.fromCharCode(charCode)) && charCode>9 && !event.ctrlKey){
+
+				eventInstance.preventDefault(event);	
+				
+			}else{
+				//获取剪切板中的数据
+				//console.log(eventInstance.getClipboardText(event));
+				console.log(eventInstance.setClipboardText(event, 'dingyousi'));
+			
+			}*/
+			
+			var text=eventInstance.getClipboardText(event);
+			
+			if(!/^\d*$/.test(text)){
+				
+				eventInstance.preventDefault(event);
+			}else{
+				alert('剪切的是数值')	
+			}
+			
+		});
+		
+    </script>
+    
+</body>
+</html>

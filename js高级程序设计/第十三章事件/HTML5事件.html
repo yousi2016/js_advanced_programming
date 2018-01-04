@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;height:2000px;}
+#myDiv{width:200px;height:200px;border:1px solid #000;}
+
+</style>
+<script src="clientDetection.js" type="text/javascript"></script>
+
+<script src="eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div id="myDiv">点击右键弹出上下文菜单</div>
+	<ul id="myMenu" style="position:absolute; visibility:hidden;background-color:silver">
+    	<li><a href="http://www.baidu.com">111111</a></li>
+        <li><a href="http://www.yahu.com">2222222</a></li>
+        <li><a href="http://www.baidu.com">3333333</a></li>
+    </ul>
+    <script> 
+		
+		var eventInstance=new EventFunction();
+		
+		//放到私有函数中,避免新创建的函数干扰全局作用域
+		(function(id){
+			
+			var myObject=document.getElementById(id);
+			
+			var menu=document.getElementById('myMenu');
+			
+			eventInstance.addHandler(myObject, 'contextmenu', function(event){
+				
+				eventInstance.preventDefault(event);
+				
+				menu.style.visibility='visible';
+				
+				menu.style.left=eventInstance.getClientX(event)+'px';
+				
+				menu.style.top=eventInstance.getClientY(event)+'px';
+				
+			});
+			
+			eventInstance.addHandler(document, 'click', function(event){
+				
+				menu.style.visibility='hidden';
+				
+			});
+			
+		})('myDiv');
+		
+    </script>
+    
+</body>
+</html>

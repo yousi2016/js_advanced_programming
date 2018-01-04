@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	
+	function Person(){};//自定义构造函数
+	
+	//Person.prototype是自定义的构造函数所在的原型属性prototype指向的对象（就叫自定义的原型对象）；
+	
+	//Array是原生的构造函数
+	//Array.prototype是原生的构造函数所在的原型属性prototype指向的对象（就叫原生的原型对象）；
+	console.log(typeof Array.prototype.sort);//function;
+	
+	console.log(typeof String.prototype.substring);//function
+	
+	String.prototype.startsWith=function(text){
+		return this.indexOf(text)==0;	
+	};
+	
+	var msg='hello word';
+	
+	console.log(msg.startsWith('hello'));//true;
+	
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

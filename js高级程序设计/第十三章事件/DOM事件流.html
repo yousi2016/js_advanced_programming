@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;}
+div{border:1px solid #ddd;}
+#box1{width:500px;height:500px; background:red;}
+#box2{width:400px;height:400px; background:blue;}
+#box3{width:300px;height:300px; background:green;}
+#box4{width:200px;height:200px; background:yellow;}
+</style>
+
+
+<script>
+window.onload=function()
+{
+   var oBox1=document.getElementById('box1');
+   var oBox2=document.getElementById('box2');
+   var oBox3=document.getElementById('box3');
+   var oBox4=document.getElementById('box4');
+ 
+ 	document.body.onclick=function()
+    {
+	   alert(0);  
+	    
+    };
+   
+   document.onclick=function()
+   {
+	   alert(-1);   
+   };
+   oBox1.onclick=function()
+   {
+	   alert(1);   
+   };
+   oBox2.onclick=function()
+   {
+	   alert(2);   
+   };
+   oBox3.onclick=function()
+   {
+	   alert(3);   
+	  
+   };
+   
+   //ev是firefox的特性
+   oBox4.onclick=function(ev)
+   {
+	  
+	   alert(4);
+	  
+	   var oEvent=ev||event;
+	   oEvent.cancelBubble=true;  
+   };
+    
+	
+};
+ 
+</script>
+</head>
+
+<body>
+
+<div id="box1">
+	1
+    <div id="box2">
+         2   
+        <div id="box3">
+            3
+        	<div id="box4">4</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<form id="myForm" name="form1" action="http://www.baidu.com">
+		<input type="submit"  name="submit-btn" value="meinv"/>
+    </form>
+    <script> 
+		var form=document.getElementById('myForm');
+		
+		var field=form.elements[0];
+		
+		//field.value='xxx';
+		
+		//检查form属性的值
+		console.log(field.form === form);
+		
+		//把焦点设置到当前字段
+		//field.focus();
+		
+		//禁用当前字段
+		//field.disabled=true;
+		
+		//修改type属性(不推荐，但是对input来说是可行的)
+		//field.type='checkbox';
+		
+		var eventInstance=new EventFunction();
+		
+		eventInstance.addHandler(form, 'submit', function(event){
+			
+			var target=eventInstance.getTarget(event);
+			
+			eventInstance.preventDefault(event);
+			//取得提交按钮
+			var btn=target.elements['submit-btn'];
+			
+			console.log(btn);
+			btn.disabled=true;
+		});
+    </script>
+    
+</body>
+</html>

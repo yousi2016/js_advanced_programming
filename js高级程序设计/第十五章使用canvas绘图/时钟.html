@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#000;}
+#c1{background:#fff; width:400px;height:400px;}/*宽高写在这里就会有问题*/
+</style>
+<script>
+window.onload = function(){
+	
+	
+	var oC=document.getElementById('c1');
+	
+	//绘制环境相当于画板
+	//oC.getContext('3d');//3d立体图像现在还没有完全实现，可以用webgl来代替
+	var oGC=oC.getContext('2d');
+	
+	function draw(){
+		
+		var x=200, 
+			
+			y=200,
+			
+			r=100;
+		
+		//开始绘制路径
+		oGC.beginPath();
+		
+		oGC.moveTo(x, y);
+		//绘制外圆
+		//然后点下第二个点：0弧度对应的点(300, 200)	再点下第三个点：90*Math.PI/180弧度对应的点(200,300)		
+		
+		//每一次循环都是点下两个点，一共点下24个点
+		for(var i=0;i<12;i++){
+			oGC.arc(x, y, r, 0, 30*Math.PI/180, false);		
+		};
+		
+		
+		//闭合绘制路径
+		oGC.closePath();
+		
+		//最终将所有路径用实线描绘一边
+		oGC.stroke();
+		
+			
+	};
+	
+	draw();
+	
+};
+</script>
+</head>
+
+<body>
+	<canvas id="c1" width="400" height="400">不支持canvas的浏览器显示的内容</canvas><!--默认宽度：300默认高度：150透明度：０（完全透明）-->
+</body>
+</html>
+
+
+

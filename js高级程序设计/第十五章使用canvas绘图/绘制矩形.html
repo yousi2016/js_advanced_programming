@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+#drawing{border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<canvas id="drawing" width="500" height="500">A drawing of something</canvas>
+    <script>
+    	var drawing = document.getElementById('drawing');
+		
+		//判断浏览器是否支持canvas(IE8-不支持)
+		if(drawing.getContext){
+			
+			var context=drawing.getContext('2d');
+			
+			//填充
+			//绘制蓝色矩形
+			context.fillStyle='red';
+			
+			//四个参数依次是：矩形在canvas中的x坐标，y坐标，矩形的宽度，矩形的高度
+			context.fillRect(10, 10, 50, 50);
+			
+			//绘制半透明的蓝色矩形
+			context.fillStyle='rgba(0, 0, 255, 0.5)';
+			context.fillRect(30, 30, 50, 50);
+			
+			//在两个矩形重叠的地方清除一个小矩形
+			context.clearRect(40, 40, 10, 10);
+			
+			//描边
+			//绘制红色描边的矩形
+			context.strokeStyle='#ff0000';
+			context.strokeRect(100, 100, 100, 100);
+			
+			//绘制半透明的蓝色描边矩形
+			context.strokeStyle='rgba(0, 0, 255, 0.5)';
+			context.lineWidth='10';
+			
+			context.lineCap='round';
+			
+			//控制线条相交的方式
+			//圆交:round;斜交：bevel，斜接：miter
+			
+			context.lineJoin='miter';
+			
+			//绘制第二个矩形区域
+			context.strokeRect(120, 120, 100, 100);
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+    </script>
+</body>
+</html>

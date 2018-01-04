@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+	//不要这样做！这不是能力检测--只检测了是否存在相应的方法
+	function isSortable(object){
+		
+		return !!object.sort;	
+	};
+	
+	var arr=[];
+	var string='jdfkafj';
+	console.log(isSortable(arr));//true;
+	console.log(isSortable(string));//false;
+	//含有属性sort但是不支持排序啊
+	var result=isSortable({sort: true});
+	
+	//只有检测sort是一个函数才是排序的方法
+	function isSortable(object){
+		
+		return typeof object.sort === 'function';	
+	};
+	
+	console.log(isSortable(arr));//true;
+	
+	console.log(isSortable({sort: true}));//false;
+	
+	//ie6/7/8不支持
+	function hasCreateElement(){
+		
+		return typeof document.createElement === 'function';	
+		
+	};
+	console.log(hasCreateElement());//false;
+	
+	//在IE中会导致错误
+	var xhr=new ActiveXObject('Microsoft.XMLHttp');
+	
+	//if(xhr.open){//这里会发生错误对象不支持此属性或方法
+		
+		//执行操作	
+	//}
+	console.log(typeof xhr.open);//unknown
+	
+	//在浏览器环境下测试某个对象的属性是否存在
+	function isHostMethod(object, property){
+		
+			var t=typeof object[property];
+			
+			return t == 'function' || (!!(t=='object' && object[property])) || t == 'unknown';
+						
+	};
+	
+	console.log(isHostMethod(xhr, 'open'));//true;
+	console.log(isHostMethod(xhr, 'foo'));//false
+</script>
+	
+
+
+</head>
+
+<body>
+    <div id="dom">8888888</div>
+</body>
+
+</html>
+ 

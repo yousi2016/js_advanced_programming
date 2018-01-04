@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+	var wroxWin=window.open('http://www.wrox.com', 'wroxWindow', 'height=100,width=100,top=100,left=100,resizable=yes');
+	
+	console.log(wroxWin.opener==window);//true;
+	
+	wroxWin.opener==null;//新创建的标签页也原始标签页之间的联系被切断，在独立的进程中运行
+	
+</script>
+	
+
+
+</head>
+
+<body>
+	<!--<a href="http://www.wrox.com" target="topFrame">888</a>-->
+    
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#000;}
+#c1{background:#fff; width:400px;height:400px;}/*宽高写在这里就会有问题*/
+</style>
+<script>
+window.onload = function(){
+	
+	//获取canvas(画布)
+	var oC=document.getElementById('c1');
+	
+	//获取绘制环境(画笔)
+	var oGC=oC.getContext('2d');
+	
+	//画画的函数
+	function draw(){
+			
+			//画的圆的x轴坐标
+		var x=200,
+			
+			//画的圆的y轴坐标
+			y=200,
+			
+			//画的圆的半径
+			r=100;
+		
+		//画外圆
+		//开始保存路径
+		oGC.save();
+			
+			//开始绘制路径
+			oGC.beginPath();
+				
+				//画外圆
+				oGC.arc(x, y, r, 0, 360*Math.PI/180, false);
+			
+			//结束绘制路径
+			oGC.closePath();
+			
+			//实际绘制
+			oGC.stroke();
+		
+		//回复路径
+		oGC.restore();
+		
+		
+		
+		//开始画分针刻度
+		//保存上下文
+		oGC.save();
+			
+			for(var i=0;i<60;i++){
+				//开始绘制路径
+				oGC.beginPath();
+					
+					//画第一个点(原点)
+					oGC.moveTo(x, y);
+					
+					//画外圆
+					oGC.arc(x, y, r, i*6*Math.PI/180, (i+1)*6*Math.PI/180, false);
+				
+				//结束绘制路径
+				oGC.closePath();
+				
+				//实际绘制
+				oGC.stroke();
+				
+			};
+		
+		//回复路径
+		oGC.restore();
+		
+		//画一个覆盖分针刻度的圆(注意千万一定要先画这个大圆)
+		//开始保存路径
+		oGC.save();
+			
+			//开始绘制路径
+			oGC.beginPath();
+				
+				//画外圆
+				oGC.arc(x, y, r*0.9,0, 360*Math.PI/180, false);
+			
+			//结束绘制路径
+			oGC.closePath();
+			
+			//填充颜色
+			oGC.fillStyle='#fff';
+			
+			//实际绘制
+			oGC.fill();
+		
+		//回复路径
+		oGC.restore();
+		
+		
+		//开始画时针刻度
+		//保存上下文
+		oGC.save();
+			
+			for(var i=0;i<12;i++){
+				//开始绘制路径
+				oGC.beginPath();
+					
+					//画第一个点(原点)
+					oGC.moveTo(x, y);
+					
+					//画外圆
+					oGC.arc(x, y, r, i*30*Math.PI/180, (i+1)*30*Math.PI/180, false);
+				
+				//结束绘制路径
+				oGC.closePath();
+				
+				//实际绘制
+				oGC.stroke();
+				
+			};
+		
+		//回复路径
+		oGC.restore();
+		
+		//画一个覆盖时针刻度的圆
+		//开始保存路径
+		oGC.save();
+			
+			//开始绘制路径
+			oGC.beginPath();
+				
+				//画外圆
+				oGC.arc(x, y, r*0.85,0, 360*Math.PI/180, false);
+			
+			//结束绘制路径
+			oGC.closePath();
+			
+			//填充颜色
+			oGC.fillStyle='#fff';
+			
+			//实际绘制
+			oGC.fill();
+		
+		//回复路径
+		oGC.restore();
+		
+		//要想画时分秒针的运动得先获取时间对象
+		var date=new Date();
+		
+		var iH=date.getHours();
+		
+		var iM=date.getMinutes();
+		
+		var iS=date.getSeconds();
+		
+		//var iMillis=date.getMilliseconds();
+
+		//获取时针旋转角度
+		var iHval=(iH*30-90+iM/2)*Math.PI/180;
+		
+		//获取分针旋转角度
+		var iMval=(iM*6-90)*Math.PI/180;
+		
+		//获取秒针旋转角度
+		var iSval=(iS*6-90)*Math.PI/180;
+		
+		//获取毫秒针旋转角度
+		//var iMillisval=(iMillis*6-90)*Math.PI/180;
+		
+		//画时分秒针的函数
+		function drawTime(radian, color, width, radius){
+			
+			oGC.save();
+			
+				//开始绘制路径
+				oGC.beginPath();
+					
+					oGC.moveTo(x, y);
+					
+					oGC.arc(x, y, radius, radian, radian, false);
+				
+				//结束绘制路径
+				oGC.closePath();
+				
+				oGC.lineWidth=width;
+				
+				oGC.strokeStyle=color;
+				
+				oGC.stroke();
+			
+			//回复路径
+			oGC.restore();
+		}
+		
+		
+		drawTime(iHval, 'orange', 5, r*0.6);
+		
+		drawTime(iMval, 'green', 3, r*0.7);
+		
+		drawTime(iSval, 'blue', 1, r*0.8);
+		
+		//drawTime(iMillisval, 'red', 0, r*0.9);
+	};
+	
+	//先执行一次
+	draw();
+	
+	setInterval(function(){
+		draw();	
+	}, 1000);
+};
+</script>
+</head>
+
+<body>
+	<canvas id="c1" width="400" height="400">不支持canvas的浏览器显示的内容</canvas><!--默认宽度：300默认高度：150透明度：０（完全透明）-->
+</body>
+</html>
+
+
+

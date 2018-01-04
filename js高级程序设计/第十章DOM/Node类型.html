@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+
+
+</head>
+
+<body>
+    <div data-title="dom"></div>
+</body>
+
+</html>
+<script>
+	//DOM1级定义了一个Node接口，该接口将有DOM中所有节点类型实现。这个Node接口在js中是作为Node类型实现的，除了IE之外，在其他所有浏览器中都可以访问到这个类型。js中的所有节点类型都继承自Node类型，因此所有节点类型都共享Node类型的属性和方法
+	
+	//每个节点都有一个nodeType属性，用于表明节点的类型。节点类型由在Node类型中定义的下列12个数值常量来表示，任何节点类型必居其一
+	//全部是number类型，都是常量
+	/*console.log(Node.ELEMENT_NODE);//1
+	console.log(Node.ATTRIBUTE_NODE);//2
+	console.log(Node.TEXT_NODE);//3
+	console.log(Node.CDATA_SECTION_NODE);//4
+	console.log(Node.ENTITY_REFERENCE_NODE);//5
+	console.log(Node.ENTITY_NODE);//6
+	console.log(Node.PROCESSING_INSTRUCTION_NODE);//7
+	console.log(Node.COMMENT_NODE);//8
+	console.log(Node.DOCUMENT_NODE);//9
+	console.log(Node.DOCUMENT_TYPE_NODE);//10
+	console.log(Node.DOCUMENT_FRAGMENT_NODE);//11
+	console.log(Node.NOTATION_NODE);//12
+	/*node.element_node;
+	node.attribute_node;
+	node.text_node;
+	node.cdata_section_node;
+	node.entity_reference_node;
+	node.entity_node;
+	node.processing_instruction_node;
+	node.comment_node;
+	node.document_node;
+	node.document_type_node;
+	node.document_fragment_node;
+	node.notation_node;*/
+	//ie6/7/8不能访问Node类型
+	/*if(document.nodeType == Node.DOCUMENT_NODE){
+		console.log('document 是一个文档节点！');
+	}
+	
+	
+	if(document.getElementsByTagName('html')[0].nodeType == Node.ELEMENT_NODE){
+		console.log('HTML 是一个元素节点！');
+	}
+	
+	if(document.getElementsByTagName('head')[0].nodeType == Node.ELEMENT_NODE){
+		console.log('head 是一个元素节点！');
+	}
+	
+	if(document.getElementsByTagName('body')[0].nodeType == Node.ELEMENT_NODE){
+		console.log('body 是一个元素节点！');
+	}
+	
+	if(document.getElementsByTagName('title')[0].nodeType == Node.ELEMENT_NODE){
+		console.log('title 是一个元素节点！');
+	}*/
+	//适应于所有浏览器
+	if(document.getElementsByTagName('html')[0].nodeType == 1){
+		console.log('HTML 是一个元素节点！');
+	}
+	
+</script>
+	

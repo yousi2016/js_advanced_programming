@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	/*function addSomeNum(num){
+		return num+100;	
+	};
+	
+	function addSomeNum(num){
+		return num+200;	
+	};
+	
+	var result=addSomeNum(100);
+	
+	console.log(result);//300*/
+	
+	//声明了两个同名函数，第二个函数覆盖了第一个函数
+	//原因：上面的函数等价于下面的函数
+	var addSomeNum=function(num){
+		return num+100;	
+	};
+	
+	addSomeNum=function(num){
+		return num+200;	
+	};
+	
+	var result=addSomeNum(100);
+	
+	console.log(result);//300
+	//函数的覆盖转换成了变量的覆盖
+</script>
+</head>
+
+<body>
+</body>
+</html>

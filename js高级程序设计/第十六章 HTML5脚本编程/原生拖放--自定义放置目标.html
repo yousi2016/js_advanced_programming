@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin:0;padding: 0;}
+			#box{
+				width: 100px;
+				height: 100px;
+				background: blue;
+			}
+			#box2{
+				width: 500px;
+				height: 500px;
+				background: #ddd;
+			}
+		</style>
+		<script src="eventObject.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			window.onload=function () {
+				
+				//创建一个新的对象
+				var newObject=new EventFunction();
+								
+				var oBox=document.getElementById("box");
+				var oBox2=document.getElementById("box2");
+				
+				//dragstart drag dragend三个事件的目标都是被拖动的元素oBox
+				//开始拖动oBox 
+				oBox.ondragstart=function (ev) {
+					
+					//console.log('drag');
+					//获取事件对象
+					var event=newObject.getEvent(event);
+					
+					//获取被拖放的元素oBox
+					var target=newObject.getTarget(event);
+					
+					target.style.backgroundColor="green";
+					
+					event.dataTransfer.setData('text', target.id);
+					//触发dragstart事件后，随即会触发drag事件，而且在元素被拖动期间会持续触发该事件
+					newObject.addHandler(oBox, 'drag', function (event) {
+						
+						
+					});
+					
+					//当拖动停止时，无论是把被拖放的元素放到了无效目标还是有效目标上，当释放鼠标的时候都会触发dragend事件
+					newObject.addHandler(oBox, 'dragend', function (event) {
+						console.log('dragend');
+					});
+					
+					newObject.addHandler(oBox2, 'dragenter', function (event) {
+						
+						console.log('dragenter');
+						
+						//newObject.preventDefault(event);
+						
+						
+					});
+					
+					newObject.addHandler(oBox2, 'dragover', function (event) {
+						
+						//dragover 事件规定在何处放置被拖动的数据。
+						//默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+						//就是让被拖动的元素允许放到目标元素上
+						newObject.preventDefault(event);
+						console.log('dragover');						
+					
+					});
+						
+					newObject.addHandler(oBox2, 'dragleave', function (event) {
+						
+						console.log('dragleave');					
+					
+					});
+					
+					newObject.addHandler(oBox2, 'drop', function (event) {
+						
+						//调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）	对FF来说的
+						newObject.preventDefault(event);
+						console.log('drop');
+						
+						var data=event.dataTransfer.getData('text');
+						
+						oBox2.appendChild(document.getElementById(data));
+					
+					});
+				};
+				
+			}
+		</script>
+	</head>
+	<body>
+		<img id="box" draggable="true" src="meinv.jpg"/>
+			
+		
+		<div id="box2">回收站</div>
+	</body>
+</html>

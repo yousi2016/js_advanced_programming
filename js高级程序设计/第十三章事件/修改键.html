@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;height:2000px;}
+#myDiv{width:200px;height:200px;border:1px solid #000;}
+input{width:100px;height:30px;}
+</style>
+
+</head>
+
+<body>
+	<div id="myDiv">
+    	<input id="myBtn" type="button" value=""/>
+    </div>
+    <script> 
+		
+		
+		function EventFunction(){
+		};
+		
+		
+		var EventUtil={
+			
+			constructor:EventFunction,
+			
+			//添加事件处理程序
+			addHandler:function(element, type, handler){
+				var _this=this;
+				if(element.addEventListener){
+					element.addEventListener(type, handler, false);	
+				}else if(element.attachEvent){
+					element.attachEvent('on'+type, handler);	
+				}else{
+					element['on'+type]=handler;	
+				}
+			},
+			//获取事件对象
+			getEvent:function(event){
+				return event?event:window.event;	
+			},
+			//获取事件目标
+			getTarget:function(event){
+				return this.getEvent(event).target || this.getEvent(event).srcElement;	
+			},
+			//取消默认行为
+			preventDefault:function(event){
+				if(this.getEvent(event).preventDefault){
+					this.getEvent(event).preventDefault();	
+				}else{
+					this.getEvent(event).returnValue=false;	
+				}	
+			},
+			//删除事件处理程序
+			removeHandler:function(element, type, handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type, handler, false);	
+				}else if(element.detachEvent){
+					element.detachEvent('on'+type, handler);	
+				}else{
+					element['on'+type]=null;	
+				}
+			},
+			//取消冒泡
+			stopPropagation:function(event){
+				if(this.getEvent(event).stopPropagation){
+					this.getEvent(event).stopPropagation();	
+				}else{
+					this.getEvent(event).cancelBubble=true;	
+				}
+			},
+			//获取向左滚动距离
+			scrollLeft:function(){
+				return 	document.body.scrollLeft || document.documentElement.scrollLeft;
+			},
+			//获取向上滚动距离
+			scrollTop:function(){
+				return 	document.body.scrollTop || document.documentElement.scrollTop;
+			},
+			//获取可视区坐标位置
+			getClientX:function(event){
+		
+				return this.getEvent(event).clientX;
+			},
+			getClientY:function(event){
+				return this.getEvent(event).clientY;
+			},
+			//获取页面坐标位置
+			getPageX:function(event){
+				return 	this.getClientX(event)+this.scrollLeft();
+			},
+			getPageY:function(event){
+				return 	this.getClientY(event)+this.scrollTop();
+			},
+			//获取屏幕坐标位置
+			getScreenX:function(event){
+				return this.getEvent(event).screenX;
+			},
+			getScreenY:function(event){
+				return this.getEvent(event).screenY;
+			},
+			
+		};
+		
+		EventFunction.prototype=EventUtil;
+		
+		var eventInstance=new EventFunction();
+
+		
+		eventInstance.addHandler(document, 'click', function(event){
+			
+			var event=eventInstance.getEvent(event);
+			
+			var keys=[];
+			
+			if(event.shiftKey){
+				keys.push('shift');	
+			}
+			if(event.ctrlKey){
+				keys.push('ctrl');	
+			}
+			if(event.altKey){
+				keys.push('alt');	
+			}
+			if(event.metaKey){
+				keys.push('meta');	
+			}
+			
+			console.log(keys);
+				
+		});
+		
+		
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+
+</style>
+</head>
+
+<body>
+	<fieldset>
+    	<legend>Which color do you prefer?</legend>
+        <ul>
+        	<li>
+            	<input type="radio" value="red" name="color" id="colorRed" />
+                <label for='colorRed'>Red</label>                
+            </li>
+            <li>
+            	<input type="radio" value="green" name="color" id="colorGreen" />
+                <label for='colorGreen'>Green</label>                
+            </li>
+            <li>
+            	<input type="radio" value="blue" name="color" id="colorBlue" />
+                <label for='colorBlue'>Blue</label>                
+            </li>
+        </ul>
+    </fieldset>
+   	<script>
+    	var radios=document.getElementsByName('color');
+		
+		console.log(radios);
+		//console.log(radios.namedItem('color'));
+    </script>
+</body>
+</html>

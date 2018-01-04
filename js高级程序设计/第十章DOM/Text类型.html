@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+
+</style>
+</head>
+
+<body>
+	<div></div>
+    <div> </div>
+    <div>8888 999</div>
+    <script>	
+		var div=document.getElementsByTagName('div')[2];
+		
+		console.log(div.childNodes[0]);//undefined;
+		div.childNodes[0].nodeValue='Some message';
+		console.log(div.childNodes[0]);
+		div.firstChild.nodeValue='Some <strong>other</strong>message';
+    </script>
+</body>
+</html>

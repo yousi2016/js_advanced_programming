@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+	//ECMAScript只支持实现继承，而且其主要是依靠原型链来实现的
+	//原型链的基本思想：利用原型让一个引用类型继承另一个引用类型的属性和方法。
+	function Person(name){
+		this.name=name;	
+	};
+	
+	Person.prototype.showName=function(){
+		return this.name;
+	};
+	
+	//让Car继承Person(就是让Car的prototype属性指针连到Person的实例属性[[Prototype]]指针上面)这样就练成一条线了
+	Car.prototype=new Person('yousi');
+	
+	function Car(color){
+		this.color=color;	
+	};
+	
+	Car.prototype.showColor=function(){
+		return this.name;
+	};
+	
+	var instance=new Car('blue111');
+	
+	
+	console.log(instance.showName());//blue
+	
+	var boo=new Boolean();
+	
+	console.log(boo.toString());//找到原型链的最顶端Object.prototype.toString的这个方法
+	
+	//确定原型和实例的关系
+	//第一种方式是使用instanceof操作符
+	console.log(instance instanceof Object);//true
+	
+	console.log(instance instanceof Person);//true
+	
+	console.log(instance instanceof Car);//true
+	//第二种方式：使用isPrototypeOf();
+	console.log(Object.prototype.isPrototypeOf(instance));//true
+	
+	console.log(Person.prototype.isPrototypeOf(instance));//true
+	
+	console.log(Car.prototype.isPrototypeOf(instance));//true
+	
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

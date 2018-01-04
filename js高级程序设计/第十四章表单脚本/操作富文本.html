@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+    <iframe name="richedit" style="width:500px;height:500px;" src="black.html"></iframe>
+    <script> 
+		
+		var eventObject=new EventFunction();
+		
+		eventObject.addHandler(window, 'load', function(){
+			
+			//整个文档变得可以编辑
+			frames['richedit'].document.designMode = 'on';	
+			
+		});
+		
+		//转换粗体文本
+		frames['richedit'].document.execCommand('bold', false, null);	
+		
+		//转换斜体文本
+		frames['richedit'].document.execCommand('italic', false, null);	
+		
+		//创建指向www.wrox.com的链接
+		frames['richedit'].document.execCommand('createlink', false, 'http://www.wrox.com');
+		
+		//检测当前选择的可编辑区域是否可以执行传入的命令
+		var result=	frames['richedit'].document.queryCommandEnabled('cut');
+		
+		console.log(result);
+		
+		//检测是否已经将指定命令应用到了选择的文本
+		var isBold=frames['richedit'].document.queryCommandState('bold');
+		
+		console.log(isBold);
+		frames['richedit'].document.execCommand('fontsize', false, 7);	
+		
+		var fontsize=frames['richedit'].document.queryCommandValue('fontsize');
+		
+		console.log(fontsize);
+		
+    </script>
+    
+</body>
+</html>

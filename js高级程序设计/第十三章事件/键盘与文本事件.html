@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;height:2000px;}
+#myDiv{width:200px;height:200px;border:1px solid #000;}
+input{width:100px;height:30px;}
+</style>
+<script src="clientDetection.js" type="text/javascript"></script>
+
+<script src="eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<input type="text" id="txt"/>
+    <script> 
+		
+		
+		var eventInstance=new EventFunction('txt');
+		
+		//放到私有函数中,避免新创建的函数干扰全局作用域
+		(function(){
+			
+			var myText=document.getElementById('txt');
+			
+			eventInstance.addHandler(myText, 'keypress', function(event){
+				
+				var event=eventInstance.getEvent(event);
+				
+				var charCode=eventInstance.getCharCode(event);
+				
+				String.fromCharCode(charCode);
+				console.log(charCode)
+			});
+		})();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+	window.onload=function(){
+		//上面的框架
+		console.log(window.frames[0]);
+		console.log(window.frames['topFrame']);
+		console.log(top.frames[0]);
+		console.log(top.frames['topFrame']);
+		console.log(frames[0]);
+		console.log(frames['topFrame']);
+		
+		//左边的框架
+		console.log(window.frames[1]);
+		console.log(window.frames['leftFrame']);
+		console.log(top.frames['leftFrame']);
+		console.log(top.frames[1]);
+		console.log(frames[1]);
+		console.log(frames['leftFrame']);
+		//右边的框架
+		console.log(window.frames[2]);
+		console.log(window.frames['rightFrames']);
+		console.log(top.frames['rightFrame']);
+		console.log(top.frames[2]);
+		console.log(frames[2]);
+		console.log(frames['rightFrame']);
+	};
+</script>
+	
+
+
+</head>
+<frameset rows="160, *">
+    <frame src='frame.htm' name='topFrame' />
+    <frameset cols="50%, 50%">
+        <frame src="anotherframe.htm" name="leftFrame">
+        <frame src="yetnotherframe.htm" name="rightFrame">
+    </frameset>
+</frameset>
+<body>
+	
+</body>
+
+</html>

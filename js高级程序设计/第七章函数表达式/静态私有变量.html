@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//通过在私有作用域中定义私有变量或者私有函数
+(function(){
+	
+	var privateVariable=10;
+	
+	function privateFunction(){
+		console.log(888);
+	};	
+	
+	MyObject=function(){
+		
+	};
+	
+	MyObject.prototype.publicMethod=function(){
+		
+		privateVariable++;
+		
+		return privateFunction();	
+	};
+})();
+
+var instance=new MyObject();
+
+instance.publicMethod();
+
+(function(){
+	
+	var name='';
+	
+	Person=function(value){
+		
+		name=value;
+	};
+	
+	Person.prototype.getName=function(){
+		
+		return name;	
+	};
+	
+	Person.prototype.setName=function(value){
+		
+		name=value;	
+	};
+	
+	var person1=new Person('blue');
+	
+	console.log(person1.getName());//blue
+	
+	person1.setName('yousi');
+	
+	console.log(person1.getName());//yousi
+	
+	var person2=new Person('XXX');
+	
+	console.log(person2.getName());//XXX
+	
+	console.log(person1.getName());//XXX
+	
+	//以这种方式创建静态私有变量会因为使用原型而增进代码复用，但是每个实例都没有自己的私有变量
+})();
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+ 

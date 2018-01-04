@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+
+
+</head>
+
+<body>
+   <ul><li>888</li></ul>
+</body>
+
+</html>
+<script>
+
+	var oUl=document.getElementsByTagName('ul')[0];
+	
+	console.log(oUl.childNodes);//包括空格
+	//console.log(oUl.childNodes[1].innerHTML);//1
+	//console.log(oUl.childNodes.item(1).innerHTML);//1
+	//console.log(oUl.childNodes.length);//7
+	
+	//console.log(typeof oUl);//object
+//在ie8-无效
+//var arryOfNodes=Array.prototype.slice.call(oUl.childNodes, 0);
+
+
+//console.log(arryOfNodes instanceof Array);//true;
+
+//兼容所有浏览器
+function convertToArray(nodes){
+	var array=null;
+	try{
+		array=Array.prototype.slice.call(nodes, 0);//针对非ie浏览器	
+	}catch(ex){
+		array=new Array();
+		
+		for(var i=0, len=nodes.length; i<len; i++){
+			array.push(nodes[i]);	
+		}
+	}
+	return array;
+};
+
+/*console.log(convertToArray(oUl) instanceof Array);
+
+console.log(oUl.childNodes[2].nextSibling.innerHTML);//3
+
+console.log(oUl.childNodes[2].previousSibling.innerHTML);//1
+
+console.log(oUl.childNodes[0].previousSibling);//null;
+
+console.log(oUl.childNodes[oUl.childNodes.length-1].nextSibling);//null;*/
+
+console.log(oUl.firstChild.innerHTML);//888
+
+console.log(oUl.lastChild.innerHTML);//888
+</script>
+	

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+
+	var client = function(){
+		
+		var engine={
+			
+			//呈现引擎
+			ie:0,
+			gecko:0,
+			webkit:0,
+			khtml:0,
+			opera:0,
+			
+			//具体版本号
+			ver:null	
+		};
+		
+		var browser={
+			//浏览器
+			ie:0,
+			firefox:0,
+			safari:0,
+			konq:0,
+			opera:0,
+			chrome:0,
+			
+			//具体的版本
+			ver:null	
+		};
+		
+		var system = {
+			win:false,
+			mac:false,
+			x11:false	
+		};
+		var p=navigator.platform;
+	
+	console.log(p);
+	
+	system.win=p.indexOf('Win')==0;
+	system.mac=p.indexOf('Mac')==0;
+	system.x11=(p.indexOf('x11')==0) || (p.indexOf('Linux')==0);
+		//在此检测呈现引擎、平台、设备
+		return {
+			engine: engine,
+			browser:browser,
+			system:system	
+		}
+		
+	}();
+	
+	//匹配win95和win98
+	/Win(?:dows )?([^do]{2})/;
+	//匹配window NT
+	/Win(?:dows )?([^do]{2})(\d+\.\d+)/;
+	
+	/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)/;
+	
+	if(system.win){
+		if(/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)/.test(ua)){
+			if(RegExp['$1']=='NT'){
+				switch(RegExp['$2']){
+					case '5.0':
+						system.win=2000;
+						break;
+					case '5.1':
+						system.win='xp';
+						break;
+					case '6.0':
+						system.win='Vista';
+						break;
+					case '6.1':
+						system.win='7';	
+						break;
+					default:
+						system.win='NT';
+						break;
+				}
+			}else if(RegExp['$1']=='9x'){
+				system.win='ME';
+			}else {
+				system.win=RegExp['$1'];
+			}
+		}
+	}
+	if(client.system.win){
+		if(client.system.win=='vista'){
+			//说明是xp	
+		}else if(client.system.win=='vista'){
+			//说明是Vista
+		}	
+	}
+	
+</script>
+	
+
+
+</head>
+
+<body>
+    <div id="dom">8888888</div>
+</body>
+
+</html>
+ 

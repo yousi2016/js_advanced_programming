@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+	//错误！还不够具体 可能是Firefox或者Safari
+	var isFirefox = !!(navigator.vendor && navigator.vendorSub);
+	
+	//错误！假设过头了
+	var isIE= !!(document.all && document.uniqueID);
+	
+	//确定浏览器是否支持Netscape风格的插件
+	var hasNSPlugins= !!(navigator.plugins && navigator.plugins.length);
+	
+	console.log(hasNSPlugins);
+	//确定浏览器是否具有DOM1级规定的能力
+	var hasDOM1 = !!(document.getElementById && document.createElement && document.getElementsByTagName);
+	console.log(hasDOM1);
+	
+</script>
+	
+
+
+</head>
+
+<body>
+    <div id="dom">8888888</div>
+</body>
+
+</html>
+ 

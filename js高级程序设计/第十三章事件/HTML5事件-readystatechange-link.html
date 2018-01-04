@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+
+<script src="eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+    <script> 
+	
+		var eventInstance=new EventFunction();
+		
+		eventInstance.addHandler(window, 'load', function(event){
+			
+			var link=document.createElement('link');
+			
+			link.type='text/css';
+			//此处必须加上否则不是样式表不识别
+			link.rel='stylesheet';
+			//先执行一次							//IE10-会执行好几次)
+			eventInstance.addHandler(link, 'readystatechange', function(event){
+		
+				var target=eventInstance.getTarget(event);
+				
+				console.log(target.readyState);
+				
+				if(target.readyState == 'loaded' || target.readyState == 'complete'){
+					
+					eventInstance.removeHandler(target, 'readystatechange', arguments.callee);
+					
+					console.log('css loaded');	
+				}
+			});
+			
+			//在执行这里
+			link.href='readystate.css';
+			
+			document.getElementsByTagName('head')[0].appendChild(link);
+			
+			
+		});
+		
+    </script>
+    
+</body>
+</html>

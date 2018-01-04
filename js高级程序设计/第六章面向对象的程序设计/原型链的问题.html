@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	function Person(name){
+		
+		this.name=name;
+		
+	};
+	
+	Person.prototype.showName=function(){
+		
+		return this.name;	
+		
+	};
+		
+	function Car(color){
+		
+		this.color=color;	
+		
+	};
+	
+	//Car.prototype=new Person('yousi');
+	
+	Car.prototype={
+		
+		getCarValue:function(){
+			
+			return this.color;
+			
+		},
+		
+		someOtherMethod:function(){
+				
+			return this.name;
+			
+		}	
+	};
+	
+	//现在的原型包含一个Object实例，这样我们设想的原型链被切断了，构造函数（也叫引用类型）Person和Car已经没有任何关系了
+	Car.prototype.showColor=function(){
+		
+		return this.color;	
+		
+	};
+	
+	var instance=new Car('yellow');
+	
+	console.log(instance.showName());//yousi//instance.showName is not a function
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	function foo(somthing){
+		console.log(arguments[0]);//3
+		arguments[0]=somthing;
+		console.log(this.a,somthing);
+	}
+	function bind(fn,obj){
+		
+		return function(){
+			console.log(arguments);//[3]
+			return fn.apply(obj,arguments);
+		}
+	}
+	
+	var obj={
+		a:2
+		}
+		
+	var bar=bind(foo,obj);
+	
+	var b= bar(3);
+	
+	console.log(b);
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

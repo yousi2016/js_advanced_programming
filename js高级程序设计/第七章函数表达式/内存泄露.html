@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//内存泄露：闭包中引用了外部函数作用域中的活动对象
+window.onload=function(){
+	//内存泄露
+	function assignHander(){
+		
+		var element=document.getElementsByTagName('button')[0];
+		
+		element.onclick=function(){
+			console.log(2);
+			console.log(element.id)	
+		};
+	};
+	console.log(assignHander());
+	
+	//解决办法
+	function assignHander(){
+		
+		var element=document.getElementsByTagName('button')[0];
+		
+		var id=element.id;
+		
+		element.onclick=function(){
+			console.log(1);
+			console.log(id);
+			
+		};
+		
+		element=null;//解除对Dom对象的引用，顺利减少其引用数，确保正常回收其占用的内存
+	};
+	console.log(assignHander());
+};
+
+</script>
+</head>
+
+<body>
+	<button id='btn' style="width:100px;height:100px;"></button>
+</body>
+</html>
+ 

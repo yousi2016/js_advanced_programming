@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+function SuperType(){
+	
+	this.color=['red','green','blue'];		
+	
+};
+
+function SubType(){
+	
+	SuperType.call(this);
+	
+};
+SuperType.prototype.showColor=function(){
+	
+	return this.color;	
+	
+};
+
+
+
+var instance1=new SubType();
+
+instance1.color.push('black');
+console.log(instance1.color);//["red", "green", "blue", "black"]
+
+var instance2=new SubType();
+
+console.log(instance2.color);//["red", "green", "blue"]
+
+console.log(SubType.prototype.constructor);
+
+console.log(instance2.constructor);
+
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

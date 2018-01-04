@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+
+
+</head>
+
+<body>
+   <div id="div1"></div>
+   <ul>
+   		<li>0</li>
+        <li>1</li>
+        <li>2</li>
+   </ul>
+</body>
+
+</html>
+<script>
+
+var oDiv=document.getElementById('div1');
+
+var oSpan=document.createElement('span');
+
+console.log(oDiv.appendChild(oSpan) == oSpan);//true;
+
+var oUl=document.getElementsByTagName('ul')[0];
+
+//将新节点插入后成为最后一个子节点
+//var returnedNode1=oUl.insertBefore(oSpan, null);
+//console.log(returnedNode1);
+//console.log(returnedNode1==oUl.lastChild);
+
+//将新节点插入后成为第一个子节点
+/*var returnedNode2=oUl.insertBefore(oUl.children[2], oUl.children[0]);
+
+console.log(returnedNode2, oUl.lastChild);
+
+console.log(returnedNode2 == oUl.firstChild );//false
+
+console.log(returnedNode2 == oUl.children[0]);//true;
+
+
+var returnedNode3=oUl.insertBefore(oSpan, oUl.children[2]);
+
+console.log(returnedNode3, oUl.lastChild);
+console.log(oUl.childNodes[4]);//span*/
+
+//替换第一个子节点
+//var returnedNode4=oUl.replaceChild(oSpan, oUl.children[0]);
+
+//console.log(returnedNode4, oUl.children[0],oUl.children.length);//返回的是被替换的第0个li
+
+//替换最后一个子节点
+var returnedNode5=oUl.replaceChild(oUl.children[0], oUl.children[oUl.children.length-1]);
+
+
+//移除第一个子节点
+console.log(oUl.removeChild(oUl.children[0]));
+console.log(oUl.removeChild(oUl.children[0]));
+
+console.log(oUl.childNodes[0].parentNode);
+
+
+
+</script>
+	

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	/*var age=29;
+	
+	function sayAge(){
+		console.log(this.age);	//29
+	};
+	
+	console.log(window.age);//29
+	
+	sayAge();//29
+	
+	window.sayAge();//29*/
+	
+	//全局变量不能通过delete操作符删除，而直接在window对象上定义的属性可以
+	var age=29;
+	
+	window.color='blue';
+	
+	console.log(delete window.age);//false
+	
+	console.log(delete window.color);//true
+	
+	console.log(window.age);//29
+	
+	console.log(window.color);//undefined
+	
+	//var newValue=oldValue;//oldValue is not defined
+	
+	var newValue=window.oldValue;
+	
+	console.log(newValue);
+	
+	//window.location
+	//window.navigator;
+	
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>

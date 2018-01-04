@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	/*sayHi();//对于Firefox sayHi is not defined
+	var condition=true;//只有Firefox返回第一个声明，其他浏览器返回第二个声明
+	
+	if(condition){
+		
+		function sayHi(){
+			
+			alert(1);	
+				
+		};
+	}
+	else{
+		
+		function sayHi(){
+			
+			alert(2);	
+				
+		};
+	}*/
+	
+	var sayHi;
+	
+	var condition=true;
+	if(condition){
+		sayHi=function(){
+			alert(1);	
+		}	
+	}
+	else{
+		sayHi=function(){
+			alert(2);	
+		}	
+	}
+	sayHi();
+</script>
+</head>
+
+<body>
+</body>
+</html>

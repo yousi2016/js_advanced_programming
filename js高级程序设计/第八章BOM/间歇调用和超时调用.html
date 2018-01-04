@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+	//超时调用setTimeout();
+	
+	//不建议传递字符串(导致性能损失)
+	//setTimeout('alert("hello world!")', 2000);
+	
+	//推荐的调用方式
+	//window.setTimeout(function(){
+		//alert("hello world!");
+	//}, 1000);
+	//js是一个单线程序的解释器，因此一定时间内只能执行一段代码。为了控制要执行的代码，就有一个js任务队列。里面的任务会按照先进先出的规则执行
+	//第二个参数：告诉js再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了再执行
+	//调用setTimeout()之后，该方法会返回一个数值ID，表示超时调用。这个超时调用ID是计划执行代码的唯一标识符，可以通过它来取消超时调用。
+	//取消还没有执行的超时调用计划，可以调用clearTimeout()方法并将相应的超时调用ID作为参数传递给它
+	
+	//设置超时调用
+	/*var timeoutId=setTimeout(function(){
+		alert("hello world!");
+	}, 1000);
+	console.log(timeoutId)//1
+	//注意把它取消
+	clearTimeout(timeoutId);*/
+	
+	
+	//间歇调用：按照指定的时间间隔重复执行代码，直至间歇调用被取消或者页面被卸载。设置间歇调用的方法是setInterval()
+	/*var timeId=setInterval(function(){
+		console.log('hello world');
+	}, 1000);
+	console.log(timeId)//1*/
+	
+	/*var num=0;
+	var max=10;
+	var intervalId=null;
+	
+	function intervalFunction(){
+		num=num+1;
+		console.log(num);
+		if(num == max){
+			clearInterval(intervalId);	
+		}	
+	};
+	
+	intervalId=setInterval(intervalFunction, 1000);
+	
+	console.log(num);*/
+	var num=0;
+	var max=10;
+	var intervalId=null;
+	
+	function intervalFunction(){
+		num=num+1;
+		console.log(num);
+		
+		if(num<max){
+			timeoutId=setTimeout(intervalFunction, 1000);
+				
+		}else{
+			console.log('超过最大值！')
+		}
+		
+	};
+	
+	setTimeout(intervalFunction, 1000);
+	
+	console.log(num);
+	
+	
+</script>
+	
+
+
+</head>
+
+<body>
+	<!--<a href="http://www.wrox.com" target="topFrame">888</a>-->
+    
+</body>
+
+</html>

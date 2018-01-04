@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+#drawing{border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<canvas id="drawing" width="500" height="500">A drawing of something</canvas>
+  
+    <script>
+    	var drawing = document.getElementById('drawing');
+		
+		//判断浏览器是否支持canvas(IE8-不支持)
+		if(drawing.getContext){
+			
+			var context=drawing.getContext('2d'),
+				red,
+				green,
+				blue,
+				alpha
+			 	
+			var oImg=new Image();
+			
+			oImg.src='changtui.jpg';
+			
+			oImg.onload=function(){
+				
+				context.drawImage(oImg, 0, 0);
+			
+				var imageData=context.getImageData(0, 0, oImg.width, oImg.height);
+				
+				var data=imageData.data;
+				
+				console.log(imageData);
+				
+				for(var i=0;i<data.length;i++){
+					
+					red=data[i];
+					green=data[i+1];
+					blue=data[i+2];
+					alpha=data[i+3];
+					
+					//求得rgb平均值
+					average=Math.floor((red+green+blue)/3);
+					
+					//设置颜色值，透明度不变
+					data[i]=average;
+					data[i+1]=average;
+					data[i+3]=average;
+					
+				};
+				
+				//回写图像数据并且显示结果
+				imageData.data=data;
+				
+				context.putImageData(imageData, 50, 50);
+			};
+			
+		}
+		
+		
+		
+		
+    </script>
+</body>
+</html>

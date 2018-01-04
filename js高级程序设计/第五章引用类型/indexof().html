@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	var stringValue='Lorem ipsum dolor sit amet, comsectetur adipisicing elit';
+	
+	var positions=[];
+	
+	var pos=stringValue.indexOf('e');
+	
+	while(pos>-1){
+		
+		positions.push(pos);
+		
+		pos=stringValue.indexOf('e', pos+1);		
+	};
+	
+	console.log(positions);//[3, 24, 32, 35, 52]
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

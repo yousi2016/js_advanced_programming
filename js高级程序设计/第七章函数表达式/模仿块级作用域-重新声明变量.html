@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+	/*function outputNumbers(count){
+		
+		for(var i=0;i<count;i++){
+			//console.log(i);	
+			
+		};	
+		var i;
+		var i;
+		var i=1;
+		var i;
+		console.log(i);//10
+		//js解析器会对后续的多个变量声明视而不见，但是会执行后面的初始化
+	};
+	//console.log(i);//i is not defined
+	outputNumbers(10);*/
+	//匿名函数可以用来模仿块级作用域从而避免这个问题
+	
+	//(function(){})函数表达式
+	(function(){
+		//这里是块级作用域（也叫私有作用域）
+	})();
+	
+	var someFunction=function(){
+		//这里是块级作用域	
+		console.log(888);
+	};
+	
+	someFunction();
+	
+	function(){}();//Uncaught SyntaxError: Unexpected token (
+	
+	
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+ 

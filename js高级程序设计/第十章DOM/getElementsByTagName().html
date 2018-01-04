@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+
+</style>
+</head>
+
+<body>
+	<img src="www.baidu.com/images" alt="新华网" name="myImage"/>
+    <img src="" alt=""/>
+    <img src="" alt=""/>
+	<script>
+    	var images=document.getElementsByTagName('img');
+		console.log(images.length);//3
+		console.log(images[0].src);
+		console.log(images.item(0).alt);
+		
+		var myImage1=images.namedItem('myImage');
+		
+		console.log(myImage1);
+		
+		var myImage2=images['myImage'];
+		
+		console.log(myImage2);
+		
+		//所有节点
+		var allElements=document.getElementsByTagName('*');
+		
+		console.log(allElements);
+    </script>
+</body>
+</html>

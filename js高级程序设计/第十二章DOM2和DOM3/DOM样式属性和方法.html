@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{height:2000px;background:#c7edcc;}
+
+</style>
+</head>
+
+<body>
+	<div id="myDiv" style="width: 25px; height: 100px; background: blue;border:1px solid blue;"></div>
+    
+	<script>
+	
+		var supportsDOM2Css = document.implementation.hasFeature('CSS', 2.0);		
+		
+		var supportsDOM2Css2 = document.implementation.hasFeature('CSS2', 2.0);		
+		
+		console.log(supportsDOM2Css, supportsDOM2Css2);
+		
+		var myDiv=document.getElementById('myDiv');
+		
+		//IE8-不支持
+		//myDiv.style.cssFloat='right';
+		
+		//只有IE支持
+		//myDiv.style.styleFloat='right';
+		console.log(myDiv.style.cssText);//width: 25px; height: 100px; border: 1px solid blue; background: blue;
+		myDiv.style.cssText='width:100px;height:100px !important;backgroundColor:#000;';
+		
+		console.log(myDiv.style.length);
+		console.log(myDiv.style.parentRule);
+		//console.log(myDiv.style.getPropertyCSSValue('height'));
+		console.log(myDiv.style.getPropertyPriority('height'));//important
+		
+		console.log(myDiv.style.getPropertyValue('width'));//100px;
+		
+		console.log(myDiv.style.item(0));//width
+		
+		console.log(myDiv.style.removeProperty('width'));//100px;
+		
+		console.log(myDiv.style.setProperty('width', '200px', ''));
+		
+		var prop,
+		
+			value;
+		for(var i=0;i<myDiv.style.length;i++){
+			
+			prop=myDiv.style[i];
+			
+			value=myDiv.style.getPropertyValue(prop);
+			
+			console.log(prop+':'+value);			
+		}
+    </script>
+</body>
+</html>

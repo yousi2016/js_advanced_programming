@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<form id="myForm" name="form1" action="http://www.baidu.com">
+   		<input type="text" name="tel1" id="txtTel1" maxlength="3" />
+        <input type="text" name="tel2" id="txtTel2" maxlength="3" />
+        <input type="text" name="tel3" id="txtTel3" maxlength="4" />
+    </form>
+    <script> 
+		
+		var eventInstance=new EventFunction();
+
+		
+		(function(){
+			
+			function tabForward(event){
+				
+				var target=eventInstance.getTarget(event);
+				
+				if(target.value.length==target.maxLength){
+					
+					var form=target.form;	
+					
+					for(var i=0;i<form.elements.length;i++){
+						
+						if(form.elements[i] == target){
+							
+							if(form.elements[i+1]){
+								
+								form.elements[i+1].focus();	
+							}
+								
+							return;//性能优化,只要循环找到当前目标，那么就退出循环，下面的不执行了
+						}
+						
+					};
+				}
+			};
+			
+			var textbox1=document.getElementById('txtTel1');
+			
+			var textbox2=document.getElementById('txtTel2');
+			
+			var textbox3=document.getElementById('txtTel3');
+		
+			eventInstance.addHandler(textbox1, 'keyup', tabForward);
+			
+			eventInstance.addHandler(textbox2, 'keyup', tabForward);
+			
+			eventInstance.addHandler(textbox3, 'keyup', tabForward);
+			
+		})();
+		
+		
+		
+		
+		
+    </script>
+    
+</body>
+</html>

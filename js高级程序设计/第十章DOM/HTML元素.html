@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+
+</style>
+</head>
+
+<body>
+	<div id="myDiv" class="bd" title="Body text" lang="en" dir="ltr"></div>
+    <script>
+    	var div=document.getElementById('myDiv');
+		
+		//获取属性值
+		console.log(div.id);
+		console.log(div.className);
+		console.log(div.title);
+		console.log(div.lang);
+		console.log(div.dir);
+		//修改属性值
+		div.id='someOtherId';
+		div.className='ft';
+		div.title='Some other text';
+		div.lang='fr';
+		div.fir='rtl';
+    </script>
+</body>
+</html>

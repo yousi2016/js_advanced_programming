@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	var element=document.getElementById('some_element');
+	
+	var myObject=new Object();
+	
+	myObject.element=element;
+	
+	element.someObject=myObject;
+	//element不会被回收
+	//为了避免类似这样的循环引用问题
+	myObject.element=null;
+	
+	element.someObject=null;
+	 
+</script>
+</head>
+
+<body>
+</body>
+</html>

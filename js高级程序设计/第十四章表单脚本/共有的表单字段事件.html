@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<form id="myForm" name="form1" action="http://www.baidu.com">
+		<input type="text"  name="txt" value="美女" />
+        <select>
+        	<option>1</option>
+            <option>2</option>
+        </select>
+    </form>
+    <script> 
+		
+		var eventInstance=new EventFunction();
+		
+		var element=document.forms[0].elements[1];
+		
+		//获得焦点的时候
+		eventInstance.addHandler(element, 'focus', function(event){
+			
+			var target=eventInstance.getTarget(event);
+			
+			target.style.backgroundColor='yellow';
+			
+		});
+			
+		eventInstance.addHandler(element, 'blur', function(event){
+			
+			var target=eventInstance.getTarget(event);
+			
+			target.style.backgroundColor='blue';
+			
+		});
+		
+		eventInstance.addHandler(element, 'change', function(event){
+			
+			/*var target=eventInstance.getTarget(event);
+			
+			var rel=/\d/;
+			
+			if(!rel.test(target.value)){
+				
+				target.style.backgroundColor='red';
+				
+			}*/
+			var target=eventInstance.getTarget(event);
+			
+			target.style.backgroundColor='red';
+		});
+		
+			
+		
+    </script>
+    
+</body>
+</html>

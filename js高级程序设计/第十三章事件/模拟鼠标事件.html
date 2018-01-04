@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div id="myDiv">
+    	<input type="button" value="click me" id="myBtn"/>
+    </div>
+    
+    <script> 
+	
+		//事件就是网页中某个特别关注的瞬间。事件通常由用户操作或通过其他浏览器功能来触发。也可以使用js在任意时刻来触发特定的事件，而此时的事件就如同浏览器创建的事件一样。在测试web应用程序，模拟触发事件是一种及其有用方式
+		
+	var btn=document.getElementById('myBtn');
+	
+	//创建事件对象
+	var event=document.createEvent('MouseEvents');
+	
+	//初始化事件对象
+	event.initMouseEvent('click', true, true, document.defaultView, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	
+	//触发事件
+	btn.dispatchEvent(event);
+	
+	
+	
+    </script>
+    
+</body>
+</html>

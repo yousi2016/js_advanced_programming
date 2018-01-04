@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;}
+input{width:100px;height:30px;}
+</style>
+
+</head>
+
+<body>
+	<a id="myLink" href="http://www.baidu.com">阻止链接的默认行为</a>
+	<input type="button" id="myBtn" onclick="console.log(event)"/>
+    <script>
+	
+    	var btn=document.getElementById('myBtn');
+		
+		//IE8-都不支持currentTarget和target
+		/*btn.onclick=function(event){
+				//console.log(event.currentTarget === this);
+				console.log(event.target === this);
+		};*/
+		//currentTarget是事件处理程序注册的对象(可能是父级或者爷爷级);
+		//target是实际点击的目标(事件的目标)
+		document.body.onclick=function(event){
+				console.log(event.currentTarget === this);//true;
+				console.log(event.target === this);//false;
+				console.log(event.target === btn);//true;click事件冒泡到了document.body才得到了处理
+		};
+		var link=document.getElementById('myLink');
+		
+		link.onclick=function(event){
+			
+			event.preventDefault();
+				
+		};
+		
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//组合继承是js最常用的继承模式；不过他也有自己的不足。
+//缺点：无论什么情况都会调用两次超类型构造函数
+//第一次：在创建子类型原型对象的时候
+//第二次：在子类型构造函数的内部
+//最终子类型会包含超类型对象的全部实例属性，第二次调用会重写这些属性
+/*function SuperType(name,age){
+	this.name=name;
+	this.age=age;
+	this.color=['red', 'blue', 'green'];
+};
+
+SuperType.prototype.sayName=function(){
+	
+	console.log(this.name);	
+};
+
+function SubType(name,age){			//第二次调用SuperType()
+		SuperType.call(this, name, age);
+};
+
+SubType.prototype=new SuperType('blue', '66');//第一次调用SuperType()
+
+SubType.prototype.showAge=function(){
+	return this.age;
+};
+
+var instance=new SubType('yousi', '18');
+
+console.log(instance.showAge());//18*/
+
+function object(o){
+	
+	function F(){};
+	
+	F.prototype=o;
+	
+	return new F();	
+};
+
+function inheritPrototype(subType, subType){
+	var prototype=object(subType, subType);
+	
+	prototype.constructor=subType;
+	
+	subType.prototype=prototype;
+};
+
+function SuperType(name, age){
+	console.log(1);
+	this.name=name;
+	
+};
+
+SuperType.prototype.sayName=function(){
+	return this.name;	
+};
+
+function SubType(name, age){
+	console.log(2);
+	SuperType.apply(this, arguments);
+	
+	this.age=age;	
+};
+//SubType.prototype=new SuperType('blue',22);
+inheritPrototype(SubType, SuperType);
+
+SubType.prototype.sayAge=function(){
+	return this.age;	
+};
+
+var instance=new SubType('yousi', 18);
+
+console.log(instance.sayAge());//18
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

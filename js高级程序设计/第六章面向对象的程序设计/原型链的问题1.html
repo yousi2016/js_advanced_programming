@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//原型链虽然很强大，可以用它来实现继承，但是它也存在一些问题。其中最主要的问题是：来自包含引用类型值的原型。
+//原型对象中的属性都会被对象实例共享，所以要将属性和方法分开写，将属性写到构造函数中，将方法写到原型对象上面
+//通过原型链来实现继承时，原型对象实际上会变成另一个引用类型的对象实例。于是，原先的对象实例的所有属性就变成了现在的原型对象的属性了
+//原型链问题一：新的对象实例属性共享了旧的对象实例属性，这样两个新的对象实例属性都一样了，而我们要求的是不一样，必须有不同的自身属性，只有方法才是共享的
+function SuperType(){
+	this.color=['red','green','blue'];		
+};
+
+function SubType(){
+	
+};
+SuperType.prototype.sayName=function(){};
+SubType.prototype=new SuperType();
+
+var instance1=new SubType();
+
+console.log(instance1.color.push('black'));//4
+
+console.log(instance1.color);//["red", "green", "blue", "black"]
+
+var instance2=new SubType();
+
+console.log(instance2.color);//["red", "green", "blue", "black"]
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

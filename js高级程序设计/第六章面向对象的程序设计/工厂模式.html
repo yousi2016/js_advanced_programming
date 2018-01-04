@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	//工厂模式
+	function createPerson(name, age, job){
+		
+		var o=new Object();
+		
+		o.name=name;
+		
+		o.age=age;
+		
+		o.job=job;
+		
+		o.showName=function(){
+			console.log(this.name);	
+		};
+		
+		return o;	
+	};
+	
+	var person=createPerson('blue', 18, 'daza');
+	
+	console.log(person instanceof Object);//true;
+	console.log(person.constructor==Object);//true;
+	//构造函数模式
+	
+	function Person(name, age, job){//2 将构造函数的作用域赋给新对象(因此this就指向了这个新对象)
+		
+		this.name=name;//3.执行构造函数中的代码(为这个新对象添加属性)；
+		
+		this.age=age;
+		
+		this.job=job;
+		
+		this.showName=function(){
+			
+			console.log(this.name);	
+			
+		};
+		//4.返回这个新对象
+	};
+	
+	var person1=new window.Person('blue', 18, 'daza');//1 创建一个新对象
+	
+	var person2=new window.Person('xidada', 56, 'zhuxi');//构造函数Person是window下面的属性
+	
+	console.log(person1.constructor===Person);//true;
+	
+	console.log(person1.constructor===Person);//true;
+	
+	console.log(person1.constructor===person2.constructor);//true
+	
+	console.log(person1 instanceof Object);//true
+	
+	console.log(person2 instanceof Person);//true
+	
+	console.log(Person.prototype)//
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

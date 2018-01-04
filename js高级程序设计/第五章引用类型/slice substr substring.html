@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	var stringValue='hello world';
+	//console.log(stringValue.slice(3));//loworld
+	//console.log(stringValue.substring(3));//loworld
+	//console.log(stringValue.substr(3));//loworld
+	
+	//console.log(stringValue.slice(3, 7));//lo w
+	//console.log(stringValue.substring(3, 7));//lo w
+	//console.log(stringValue.substr(3, 7));//lo worl
+	
+	console.log(stringValue.slice(-7,-3));//o wo
+	console.log(stringValue.slice(4,8));//o wo
+	
+	console.log(stringValue.substring(-7,-3));
+	console.log(stringValue.substring(0,0));
+	
+	console.log(stringValue.substr(-7,-3));
+	console.log(stringValue.substr(4,0));
+	
+	console.log(stringValue.substring(3,0));
+	console.log(stringValue.substring(0,3));
+	
+	console.log(stringValue.substr(3,-4));
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

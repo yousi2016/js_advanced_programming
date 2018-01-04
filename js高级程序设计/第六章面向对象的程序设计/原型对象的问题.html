@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	//原型模式也不是没有缺点，首先它省略了为构造函数传递初始化参数这一环节，结果所有实例在默认情况下都将取得相同的属性值。
+	//原型中所有被实例共享的属性导致对于包含引用类型的值的属性来说，问题就比较突出了。来看下面的例子
+	
+	function Person(){
+		
+	};
+	//先将原先的原型对象的属性覆盖
+	Person.prototype={
+		constructor:Person,
+		name:'blue',
+		age:18,
+		job:'daza',
+		friends:['a','b'],
+		sayName:function(){
+			console.log(this.name);	
+		}
+	};
+	
+	//再创建新的实例，这样实例就会继承新的原型对象的属性了
+	var person1=new Person();
+	
+	var person2=new Person();
+	
+	//修改的是person1的指针[[Prototype]]所指向的构造函数的原型对象的friends,这个是person1和person2共享的
+	person1.friends.push('c');
+	
+	console.log(person1.friends);//["a", "b", "c"]
+	
+	console.log(Person.prototype.friends);//["a", "b", "c"]
+	
+	console.log(person2.friends);//["a", "b", "c"]
+	
+	console.log(person1.friends === person2.friends);//true
+	
+	person1.friends=888;
+	
+	console.log(person1.friends);//888
+	
+	console.log(person2.friends);//["a", "b", "c"]
+	
+	//实例一般都是要有属于自己的全部属性的，而这个问题正是我们很少看到有人单独使用这种原型模式的原因所在
+	//应该组合使用构造函数模式和原型模式
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+function Person(name){
+	
+	this.name=name;	
+	
+};
+
+function ChildPerson(){
+	
+	this.name='blue';
+	
+	Person.call(this, 'yousi');//构造函数重写了子类型的对象实例的属性，所以要放到下面写自己的属性
+	
+	this.age=18;
+};
+
+var p1=new ChildPerson();
+
+console.log(p1.name);//yousi
+
+console.log(p1.age);//18
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

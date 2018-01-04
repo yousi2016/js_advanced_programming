@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//寄生式继承是与原型式继承紧密相关的一种思路，并且同样是由克罗克福德推而广之的。
+//思路：与寄生构造函数模式和工厂模式类似，即创建一个仅用于封装继承过程的函数，该函数在内部以某种方式来增强对象，最后在像真的是它做了左右工作一样来返回对象。
+var person={
+	
+	name:'yousi',
+	
+	friends:['a', 'b', 'c']
+	
+};
+
+function create(o){
+	
+	function F(){};
+	
+	F.prototype=o;
+	
+	return new F();
+		
+};
+function createAnother(o){
+	console.log(this);
+	var clone=create(o);
+	
+	clone.sayHi=function(){
+		
+		console.log(this);
+		
+	};
+	
+	return clone;
+};
+
+var anotherPerson=createAnother(person);
+
+anotherPerson.sayHi();//Hi
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

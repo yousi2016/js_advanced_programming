@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<form id="myForm"  method="post" name="form1" action="http://www.baidu.com" novalidate='true'>
+    	<select name="location" id="selLocation1">
+        	<option>000</option>
+            <option>111</option>
+            <option>222</option>
+            <option>333</option>
+        </select>
+        <select name="location" id="selLocation2">
+        	<option>aaa</option>
+            <option>bbb</option>
+        </select>
+    </form>
+    <script> 
+		
+		//移动选项
+		var selectbox1=document.getElementById('selLocation1');
+		
+		var selectbox2=document.getElementById('selLocation2');
+		
+		//selectbox2.appendChild(selectbox1.options[0]);
+		
+		//重排选项
+		selectbox1.insertBefore(selectbox1.options[selectbox1.options.length-1], selectbox1.options[selectbox1.options.length-2]);
+		
+    </script>
+    
+</body>
+</html>

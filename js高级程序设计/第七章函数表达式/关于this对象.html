@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//在闭包中使用this对象也可能会导致一些问题，this对象在运行时是基于函数的执行环境绑定的：在全局函数中this等于window，当函数被作为某个对象的方法调用时，this等于那个对象
+//不过匿名函数的执行环境具有全局性，因此其this对象指向window，但有时候由于编写闭包的方式不同，这一点可能不会那么明
+/*var name='This window';
+
+var object={
+	name:'yousi',
+	getNameFunc:function(){
+		return function(){
+			return this.name;	
+		}	
+	}	
+};
+
+console.log(object.getNameFunc()());//This window
+
+var color='blue';
+
+function changeColor(){
+	if(color=='blue'){
+		var color='red';	
+	}else{
+		var color='yellow';
+	}	
+};
+changeColor();
+console.log(color);*/
+/*var name='This window';
+
+var object={
+	name:'yousi',
+	getNameFunc:function(){
+		var that=this;
+		return function(){
+			return that.name;	
+		}	
+	}	
+};
+
+console.log(object.getNameFunc()());//yousi*/
+var name='The window';
+
+var object={
+	name:'my object',
+	getName:function(){
+		return this.name;	
+	}	
+};
+
+console.log(object.getName());//my object
+
+console.log((object.getName)());//my object
+
+console.log((object.getName=object.getName)());//The window
+
+console.log((object.getName=function(){return this.name;})());//The window
+
+console.log((function(){return this.name;})());//The window
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

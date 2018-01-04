@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	//每个函数都有自己的执行环境，当代码在一个环境中执行时，会创建变量对象的一个作用域链
+	//作用域链的用途：是保证对执行环境有权访问的所有变量和函数的有序访问。
+	//作用域链的前端，都是当前执行的代码所在的执行环境的变量对象，如果这个环境是函数，则将其活动对象作为变量对象。活动对象在最开始时只包含一个变量，即arguments对象（这个对象在全局环境中是不存在的），
+	//全局执行环境中的变量对象始终都是作用域链中的最后一个对象
+	var color='blue';
+	
+	function changeColor(){
+		
+		if(color==='blue'){
+			
+			color='red';
+			
+		}
+		else{
+			color='green';
+		};
+	};
+	changeColor();
+	console.log(color)//red;
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+var singleto=function(value){
+		
+		//私有变量
+		var privateVarialbe=10;
+		
+		//私有函数
+		function privateFunction(){
+			return false;	
+		};	
+		
+		return {
+			
+			//公有属性
+			publicProperty:value,
+			
+			//公有方法
+			publicMethod:function(){
+				privateVarialbe++;
+				return privateFunction();
+			}	
+		};
+}(888);
+console.log(singleto.publicMethod);
+
+var application=function(){
+		
+		var arr=[];
+		
+		BaseArr=function(){
+				
+		};
+		
+		arr.push(new BaseArr());	
+		
+		return {
+			
+			getArrCount:function(){
+				
+				return arr.length;
+					
+			},	
+			
+			registerArr:function(value){
+				
+				if(typeof value == 'object'){
+					
+					arr.push(value);	
+					
+				}
+			}
+		};
+}();
+console.log(application)
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+ 

@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//变量搜索先从局部环境中找，然后再找全局环境中的匹配的变量名字
+	var color='blue';
+	
+	function getColor(){
+		var color='red';
+		return color;	
+	};
+	console.log(getColor())//blue;
+//访问局部变量比访问全局变量要快，因为不用向上搜索作用域链
+</script>
+</head>
+
+<body>
+</body>
+</html>

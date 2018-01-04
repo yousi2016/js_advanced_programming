@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	function Person(name, age, job){
+		
+		this.name=name;
+		
+		this.age=age;
+		
+		this.job=job;
+		
+		this.showName=function(){
+			
+			console.log(this.name);	
+			
+		};	
+	};
+	
+	//1.当做构造函数使用
+	var person=new Person('blue', 18, 'daza');
+	
+	person.showName();//blue
+	
+	//2.当作普通函数调用
+	Person('ding', 18, 'daza');
+	
+	window.showName();//ding
+	
+	//3. 在另一个对象的作用域中调用
+	var o=new Object();
+	
+	Person.call(o, 'xiaojing', 88, 'huizhang');
+	
+	o.showName();//xiaojing
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

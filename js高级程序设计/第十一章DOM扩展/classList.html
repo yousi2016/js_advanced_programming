@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+
+</style>
+</head>
+
+<body>
+	<div class="bd user disabled"></div>
+    
+    <script>
+    	var myDiv=document.getElementsByClassName('bd')[0];
+		var classname=myDiv.className;
+		//删除user类方法
+		//1.正则
+		/*var rel=/user/;
+		newclassname=classname.replace(rel, '');
+		console.log(newclassname);*/
+		
+		//字符串拆分
+		/*classname1=classname.slice(0,2);
+		classname2=classname.slice(8);
+		newclassname=classname1+' '+classname2;
+		console.log(newclassname);*/
+		
+		//数组
+		/*var arr=classname.split(' ');
+		var pos;
+		console.log(arr);
+		
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]== 'user'){
+				pos=i;	
+			}	
+		};
+		arr.splice(pos,1);
+		console.log(arr);
+		
+		console.log(arr.join(' '));*/
+		/*var classNames=myDiv.className.split(/\s+/);
+		
+		var pos=-1,
+			i,
+			len;
+		for(i=0, len=classNames.length; i<len; i++){
+			if(classNames[i] == 'user'){
+				pos=i;
+				break;
+			}	
+		};
+		
+		classNames.splice(i,1);
+		myDiv.className=classNames.join(' ');*/
+		//从内存中先找到myDiv然后删除user
+		myDiv.classList.remove('user');
+		
+		console.log(myDiv.className);//bd disabled
+		
+		myDiv.classList.add('yousi');
+		console.log(myDiv.className);//bd disabled yousi
+		
+		myDiv.classList.toggle('user');
+		console.log(myDiv.className);//bd disabled yousi user
+		
+		//IE9-不支持classList
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div id="myDiv"></div>
+    <script> 
+		
+		//ff3.6支持
+		var eventInstance=new EventFunction();
+		
+		var div=document.getElementById('myDiv');
+		
+		//只是定义了一个函数，但是并没有被调用也就是没有执行里面的代码
+		function handleGestureEvent(event){
+			
+			var event=eventInstance.getEvent(event);
+				
+				switch(event.type){
+					case 'gesturestart':
+						console.log(event.rotation, event.scale);
+						break;
+					
+					case 'gestureend':
+						console.log(event.rotation, event.scale);
+						break;
+					
+					case 'gesturechange':
+						eventInstance.preventDefault();//阻止滚动
+						console.log(event.rotation, event.scale);
+						break;
+				};
+			
+		};
+		
+		eventInstance.addHandler(document, 'gesturestart',handleGestureEvent);
+		
+		eventInstance.addHandler(document, 'gestureend',handleGestureEvent);
+		
+		eventInstance.addHandler(document, 'gesturechange',handleGestureEvent);
+		
+		
+    </script>
+    
+</body>
+</html>

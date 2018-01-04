@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+#drawing{border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<canvas id="drawing" width="500" height="500">A drawing of something</canvas>
+    <script>
+    	var drawing = document.getElementById('drawing');
+		
+		//判断浏览器是否支持canvas(IE8-不支持)
+		if(drawing.getContext){
+			
+			var context=drawing.getContext('2d');
+			
+			//绘制路径：就相当于画画时候的草稿(是虚拟的看不到)
+			//开始绘制路径
+			context.beginPath();
+
+			//绘制一个外圆
+			context.arc(100, 100, 99, 0, 2*Math.PI, false);
+			
+			//绘制一个内圆
+			context.moveTo(194, 100);
+			context.arc(100, 100, 94, 0, 2*Math.PI, false);
+			
+			//绘制秒针
+			context.moveTo(100, 100);
+			context.lineTo(105, 10);
+			
+			//绘制分针
+			context.moveTo(100, 100);
+			context.lineTo(100, 15);
+			
+			//绘制时针
+			context.moveTo(100, 100);
+			context.lineTo(45, 100);
+			
+			
+			//绘制圆完成
+			context.closePath();
+			
+			//调出一种颜色
+			context.fillStyle='#fff';
+			
+			//将这种颜色填充到绘制的图形里面
+			context.fill();
+			
+			//调出一种边的颜色
+			context.strokeStyle='#000';
+			
+			//描边（将路径(也就是一种绘图方式)用实线描绘出来）
+			context.stroke();
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+    </script>
+</body>
+</html>

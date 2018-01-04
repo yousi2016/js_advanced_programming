@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+    <iframe name="richedit" style="width:500px;height:500px;" src="black.html"></iframe>
+    <script> 
+		
+		var eventObject=new EventFunction();
+		
+		eventObject.addHandler(window, 'load', function(){
+			
+			//整个文档变得可以编辑
+			frames['richedit'].document.designMode = 'on';	
+			
+		});
+		
+		//转换粗体文本
+		frames['richedit'].document.execCommand('bold', false, null);	
+		
+		var selection=frames['richedit'].getSelection();
+		
+		//取得选择的文本
+		var selectedText=selection.toString();
+		
+		//取得代表选区的范围
+		//var range=selection.getRangeAt(0);
+		
+		//突出显示选择的文本
+		var span = frames['richedit'].document.createElement('span');
+		
+		span.style.backgroundColor='yellow';
+		
+		range.surroundContents(span);
+		
+		
+		//IE8-不支持DOM范围，
+		var range=frames['richedit'].document.selection.createRange();
+		
+		var selectedText=range.text;
+		
+		
+		range.pasteHTML("<span style=\"background-color:yellow\">" + range.htmlText +"</span>");
+		
+    </script>
+    
+</body>
+</html>

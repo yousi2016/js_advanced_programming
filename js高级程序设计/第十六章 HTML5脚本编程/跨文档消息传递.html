@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+
+</style>
+<script src="../第十三章事件/eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<iframe id="myframe" src="http://www.wrox.com" width="500" height="500"></iframe>
+	<script type="text/javascript">
+		var iframeWindow = document.getElementById("myframe").contentWindow;
+		iframeWindow.postMessage('dingyousi', 'http://www.wrox.com');
+		
+		console.log(iframeWindow);
+		
+		var EventUtil=new EventFunction();
+		
+		EventUtil.addHandler(window, 'message', function (event) {
+			var oEvent=EventUtil.getEvent(event);
+			console.log(oEvent);
+			//确保发送消息的域是已知的域
+			if (oEvent.origin == 'http://www.wrox.com') {
+				
+				//处理接受到的数据
+				processMessage(oEvent.data);
+				
+				//可选：向来源窗口发送回执
+				oEvent.source.postMessage('Received!', 'http://p2p.wrox.com');
+			}
+		});
+	</script>
+</body>
+</html>

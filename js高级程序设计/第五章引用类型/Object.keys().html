@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	function Person(){
+		
+			
+	};
+	Person.prototype.name='blue';
+	
+	Person.prototype.age=18;
+	
+	Person.prototype.job='daza';
+	
+	Person.prototype.showName=function(){
+		console.log(this.name);	
+	};
+	
+	var keys=Object.keys(Person.prototype);
+	console.log(keys);//["name", "age", "job", "showName"]
+	
+	for(var i=0;i<keys.length;i++){
+		console.log(keys[i]);	
+	};
+	var p1=new Person();
+	
+	p1.name='xiaojing';
+	p1.age=22;
+	var p1keys=Object.keys(p1);
+	
+	console.log(p1keys);//["name", "age"]
+	
+	//如果你想要得到所有实例属性，无论它是否可枚举，都可以使用Object.getOwnPropertyNames();
+	//获取原型对象的所有属性(包括默认的和后来添加的)
+	var keys=Object.getOwnPropertyNames(Person.prototype);
+	console.log(keys);//["constructor", "name", "age", "job", "showName"]
+	//Object.keys()和Object.getOwnPropertyNames()都可以替代for-in循环 IE9+；
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

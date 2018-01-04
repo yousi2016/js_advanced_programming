@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;}
+input{width:100px;height:30px;}
+</style>
+
+</head>
+
+<body onload="console.log('为body添加一个onload特性');">
+	<input type="button" id="myBtn" onclick="console.log(event)"/>
+   <!-- <img id="myImage" src="meinv.jpg" alt=""/>-->
+    <script>
+
+    	var btn=document.getElementById('myBtn');
+		
+		var EventUtil={
+			//添加事件处理程序
+			addHandler:function(element, type, handler){
+				if(element.addEventListener){
+					element.addEventListener(type, handler, false);	
+				}else if(element.attachEvent){
+					element.attachEvent('on'+type, handler);	
+				}else{
+					element['on'+type]=handler;	
+				}
+			},
+			//获取事件对象
+			getEvent:function(event){
+				return event?event:window.event;	
+			},
+			//获取事件目标
+			getTarget:function(event){
+				return event.target || event.srcElement;	
+			},
+			//取消默认行为
+			preventDefault:function(event){
+				if(event.preventDefault){
+					event.preventDefault();	
+				}else{
+					event.returnValue=false;	
+				}	
+			},
+			//删除事件处理程序
+			removeHandler:function(element, type, handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type, handler, false);	
+				}else if(element.detachEvent){
+					element.detachEvent('on'+type, handler);	
+				}else{
+					element['on'+type]=null;	
+				}
+			},
+			//取消冒泡
+			stopPropagation:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();	
+				}else{
+					event.cancelBubble=true;	
+				}
+			}
+		};
+		
+		//load事件
+		EventUtil.addHandler(window, 'load', function(event){
+			console.log('Loaded!');	
+			
+			console.log(EventUtil.getTarget(event));//IE8-返回null，高版本返回document
+		});
+		
+		//图像上面也可以出发load事件，无论是在DOM中的图像元素还是HTML中的图像元素，都可以指定onload事件处理程序
+		/*var image=document.getElementById('myImage');
+		
+		EventUtil.addHandler(image, 'load', function(event){
+			
+			var event=EventUtil.getEvent(event);
+			
+			console.log(EventUtil.getTarget(event));
+			
+		});*/
+		//没有图像要创建一个新的
+		EventUtil.addHandler(window, 'load', function(event){
+			
+			var image=document.createElement('img');
+			
+			//此处只有<img>标签里面有src属性才会开始下载图片，只有图片下载完毕里面的函数才会执行
+			EventUtil.addHandler(image, 'load', function(event){
+				
+				var event=EventUtil.getEvent(event);
+				
+				console.log(EventUtil.getTarget(event));//<img src='meinv.jpg'>
+			});
+			console.log(document.body.appendChild(image));
+			image.src='meinv.jpg';
+			
+			//先执行这里
+			//console.log(document.body.appendChild(image));//<img>
+			
+		});
+    </script>
+</body>
+</html>

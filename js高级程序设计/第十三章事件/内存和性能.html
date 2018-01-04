@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+div{width:200px;height:300px;border:1px solid #ddd;}
+</style>
+<script src="eventObject.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div id="myDiv"></div>
+    <script> 
+		//添加到页面的事件处理程序数量将直接影响到页面的加载速度
+		//原因：1.每个函数都是对象，都占用内存，内存中的对象越多，性能就越差。2.必须事先指定所有事件处理程序而导致的DOM访问次数，会延迟整个页面的交互就绪时间
+		
+		
+		eventInstance.addHandler(document, 'gesturestart',handleGestureEvent);
+		
+		eventInstance.addHandler(document, 'gestureend',handleGestureEvent);
+		
+		eventInstance.addHandler(document, 'gesturechange',handleGestureEvent);
+		
+		
+    </script>
+    
+</body>
+</html>

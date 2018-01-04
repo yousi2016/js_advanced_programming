@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0;}
+
+</style>
+</head>
+
+<body class="page1">
+	<div class="myDiv">1</div>
+    <div class="myDiv">2</div>
+    <div class="myDiv">3</div>
+    
+    <ul id="myUl">
+    	<li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    
+	<script>
+	
+    	console.log(document.querySelector('body'));
+		//获取的是第一个div
+		console.log(document.querySelector('.myDiv').innerHTML);
+		//获取的是一个集合
+		console.log(document.querySelectorAll('.myDiv'));
+		
+		//var oUl=document.getElementById('myUl');
+		
+		var aLi=document.querySelectorAll('ul li');
+		
+		for(var i=0;i<aLi.length;i++){
+			//console.log(aLi.item(i));	
+			console.log(aLi[i]);
+			
+			aLi[i].className='myLi';
+		};
+		//console.log(document.querySelectorAll('ul li'));
+		
+		
+		if(document.body.matchesSelector('body.page1')){
+			console.log(888);	
+		}
+    </script>
+</body>
+</html>

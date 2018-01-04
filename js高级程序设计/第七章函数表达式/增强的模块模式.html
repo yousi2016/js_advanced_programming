@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+var singeleton=function(){
+	
+	var privateVariable=10;
+	
+	function privateFunction(){
+		return false;	
+	};	
+	
+	var object=new Base();
+	
+	object.publicProperty=true;
+	
+	object.publicMethod=function(){
+		privateVariable++;
+		return 	privateFunction();
+		
+	};
+	
+	return object;
+}();
+
+var application=function(){
+	
+	var arr=[];
+	
+	arr.push(new BaseArr());	
+	
+	var app=new BaseArr();
+	
+	app.getArrCount=function(){
+		return arr.length;	
+	};
+	
+	app.registerArr=function(value){
+		if(typeof value == 'object'){
+			arr.push(value);	
+		}	
+	};
+	
+	return app;
+}();
+</script>
+</head>
+
+<body>
+	
+</body>
+</html>
+ 

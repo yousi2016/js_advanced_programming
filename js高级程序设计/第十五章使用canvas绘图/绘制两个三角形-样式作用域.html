@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#000;}
+#c1{background:#fff; width:400px;height:400px;}/*宽高写在这里就会有问题*/
+</style>
+<script>
+window.onload = function(){
+	
+	
+	var oC=document.getElementById('c1');
+	
+	//绘制环境相当于画板
+	//oC.getContext('3d');//3d立体图像现在还没有完全实现，可以用webgl来代替
+	var oGc=oC.getContext('2d');
+	
+	//这样相当于函数的私有作用域啦
+	oGc.save();
+		//调制一个蓝颜色的边框染料
+		oGc.strokeStyle='blue';
+		
+		//给边框加粗
+		oGc.lineWidth=10;
+		
+		//调制一个红色的填充的染料
+		oGc.fillStyle='red';
+		
+		//绘制第一个三角形
+		oGc.beginPath();
+		
+			oGc.moveTo(50,50);
+			
+			oGc.lineTo(100,100);
+			
+			oGc.lineTo(50,100);
+			
+		//形成闭合的图形
+		oGc.closePath();
+		
+		//根据手绘描边
+		oGc.stroke();
+		
+		oGc.fill();
+		
+	oGc.restore();
+	
+	oGc.save();
+	
+		//调制一个蓝颜色的边框染料
+		oGc.strokeStyle='red';
+		
+		//给边框加粗
+		oGc.lineWidth=2;
+		
+		//调制一个红色的填充的染料
+		oGc.fillStyle='green';
+		
+		//绘制第二个三角形
+		oGc.beginPath();
+		
+			oGc.moveTo(50,250);
+			
+			oGc.lineTo(100,200);
+			
+			oGc.lineTo(50,200);
+		
+		//形成闭合的图形
+		oGc.closePath();
+		
+		
+		//填充
+		oGc.fill();
+		
+		//根据手绘描边
+		oGc.stroke();
+	
+	oGc.restore();
+	
+};
+</script>
+</head>
+
+<body>
+	<canvas id="c1" width="400" height="400">不支持canvas的浏览器显示的内容</canvas><!--默认宽度：300默认高度：150透明度：０（完全透明）-->
+</body>
+</html>

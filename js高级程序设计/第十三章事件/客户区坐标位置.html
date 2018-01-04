@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;height:2000px;}
+#myDiv{width:200px;height:200px;border:1px solid #000;}
+input{width:100px;height:30px;}
+</style>
+
+</head>
+
+<body>
+	<div id="myDiv">
+    	<input id="myBtn" type="button" value=""/>
+    </div>
+    <script> 
+		
+		
+		function EventFunction(){
+				
+		};
+		
+		
+		var EventUtil={
+			
+			constructor:EventFunction,
+			
+			//添加事件处理程序
+			addHandler:function(element, type, handler){
+				
+				var _this=this;
+				
+				if(element.addEventListener){
+					element.addEventListener(type, handler, false);	
+				}else if(element.attachEvent){
+					element.attachEvent('on'+type, handler);	
+				}else{
+					element['on'+type]=handler;	
+				}
+			},
+			//获取事件对象
+			getEvent:function(event){
+				return event?event:window.event;	
+			},
+			//获取事件目标
+			getTarget:function(event){
+				return event.target || event.srcElement;	
+			},
+			//取消默认行为
+			preventDefault:function(event){
+				if(event.preventDefault){
+					event.preventDefault();	
+				}else{
+					event.returnValue=false;	
+				}	
+			},
+			//删除事件处理程序
+			removeHandler:function(element, type, handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type, handler, false);	
+				}else if(element.detachEvent){
+					element.detachEvent('on'+type, handler);	
+				}else{
+					element['on'+type]=null;	
+				}
+			},
+			//取消冒泡
+			stopPropagation:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();	
+				}else{
+					event.cancelBubble=true;	
+				}
+			}
+		};
+		
+		EventFunction.prototype=EventUtil;
+		
+		var eventInstance=new EventFunction();
+
+		eventInstance.addHandler(document, 'click', function(){
+			
+			var event=eventInstance.getEvent(event);
+			
+			//clientX clientY是鼠标在可视区里面的坐标
+			console.log(event.clientX+' '+event.clientY);
+				
+		});
+		
+    </script>
+</body>
+</html>

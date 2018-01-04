@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	function Person(name, age, job){
+		
+		this.name=name;
+		
+		this.age=age;
+		
+		this.job=job;
+		
+		//this.showName=new Function('console.log(this.name)');//创建两个完成同样任务的Function实例的确没有必要
+		this.showName=showName;
+	};
+	
+	function showName(){//如果一个对象有很多方法，得需要定义很多函数，这样就么有封装性可言了
+		console.log(this.name);	
+	};
+	var person1=new Person('blue', 18, 'daza');
+	
+	var person2=new Person('xidada', 56, 'zhuxi');
+	
+	person1.showName();
+	
+	person2.showName();
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

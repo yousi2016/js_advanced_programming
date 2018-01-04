@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+	var client = function(){
+		
+		var engine={
+			
+			//呈现引擎
+			ie:0,
+			gecko:0,
+			webkit:0,
+			khtml:0,
+			opera:0,
+			
+			//具体版本号
+			ver:null	
+		};
+		
+		var browser={
+			//浏览器
+			ie:0,
+			firefox:0,
+			safari:0,
+			konq:0,
+			opera:0,
+			chrome:0,
+			
+			//具体的版本
+			ver:null	
+		};
+		
+		var system = {
+			win:false,
+			mac:false,
+			x11:false,
+			
+			//移动设备
+			iphone:false,
+			ipod:false,
+			ipad:false,
+			ios:false,
+			android:false,
+			nokiaN:false,
+			winMobile:false,
+			
+			//游戏系统
+			wii:false,
+			ps:false
+			
+		};
+		
+		
+		//在此检测呈现引擎、平台、设备
+		return {
+			engine: engine,
+			browser:browser,
+			system:system	
+		}
+		
+	}();
+	
+	system.wii=ua.indexOf('Wii')>-1;
+	system.ps=/playstation/i.test(ua);
+	
+</script>
+	
+
+
+</head>
+
+<body>
+    <div id="dom">8888888</div>
+</body>
+
+</html>
+ 

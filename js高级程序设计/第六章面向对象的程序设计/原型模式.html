@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+	//我们创建的每一个函数都有一个prototype（原型）属性，这个属性是一个指针，指向一个对象，而这个属性的用途是包含由特定类型的所有实例共享的属性和方法。如果按照字面意思来理解，那么prototype就是通过构造函数创建的那个对象实例的原型对象。
+	
+	//使用原型对象的好处是可以让所有对象实例共享它所包含的属性和方法，换句话说，不必在构造函数中定义对象实例的属性和方法，而是将这些属性和方法直接添加到原型对象中
+	function Person(){
+		
+	};
+	Person.prototype.name='blue';
+	
+	Person.prototype.age=18;
+	
+	Person.prototype.job='daza';
+	
+	Person.prototype.showName=function(){
+		console.log(this.name);	
+	};
+	
+	Person.prototype.showAge=function(){
+		console.log(this.age);	
+	};
+	
+	var person1=new Person();
+	
+	var person2=new Person();
+	
+	person1.showName();
+	
+	person1.showAge();
+	
+	person2.showName();
+	
+	person2.showAge();
+	
+	console.log(person1.showName==person2.showName);//true;
+	
+	console.log(Person.prototype);
+	
+	//理解原型对象
+	//无论什么时候，只要创建了一个新函数，就会根据一组特定的规则为该函数创建一个prototype属性，这个属性指向函数的原型对象。在默认情况下，所有原型对象都会获得一个constructor(构造函数)属性，这个属性包含一个prototype属性所在函数的指针。Person.prototype.constructor指向构造函数Person，通过Person可以为原型对象：Person.prototype继续添加其他属性和方法
+	//创建了自定义的构造函数Person后，其原型对象Person.prototype默认只会取得constructor属性，至于其他方法都是通过Object继承而来的。
+	//当调用构造函数创建一个新的实例后，这个实例的内部就包含一个指针[[Prototype]]，指向构造函数的原型对象Person.prototype
+	//虽然在脚本中没有标准的方式访问[[Prototype]],但是Firefox， Safari，Chrome在每个对象上都支持一个属性__proto__;而在其他实现中，这个属性对于脚本则是完全不可见的
+	
+	//虽然在所有实现中都无法访问[[Prototype]];。但可以通过isPrototypeOf()方法来确定对象之间是否存在这种关系。
+	console.log(Person.prototype.isPrototypeOf(person1));//true   person1的指针[[Prototype]]指向原型对象Person.prototype
+	console.log(Person.prototype.isPrototypeOf(person1));//true
+	
+	//Object.getPrototypeOf();这个方法返回[[Prototype]]的值也就是获取实例对象的原型对象
+	//应用：利用原型对象实现继承
+	console.log(Object.getPrototypeOf(person1)==Person.prototype);//true
+	
+	console.log(Object.getPrototypeOf(person2)==Person.prototype);//true
+	
+	//每当代码读取某个对象的某个给定名字的属性时，都会根据这个属性的名字执行一次搜索，搜索首先从实例对象本身开始，如果在实例对象中找到了这个属性就返回该属性的值；如果没有找到，则继续搜索实例对象的指针[[Prototype]]指向的原型对象，在原型对象中查找这个属性，如果找到了就返回该属性的值
+	
+	//原型对象只包含constructor属性，这个属性也是共享的，因此可以通过对象实例访问
+	
+	//虽然可以通过对象实例访问保存在原型对象中属性的值，但却不能通过实例对象重写原型对象中的值
+	person1.name='dingyousi';
+	console.log(person1.name);//'dingyousi'首先搜索person1.name找到返回值
+	console.log(person2.name);//'blue'首先搜索person2.name，没有找到，继续搜索Person.prototype.name找到返回值
+	
+	person1.name=null;
+	
+	console.log(person1.name);//null
+	console.log(person2.name);//blue
+	
+	
+	//使用delete操作符可以完全删除person1.name,从而可以重新访问原型对象中的属性
+	
+	delete person1.name;
+	
+	console.log(person1.name);//blue
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

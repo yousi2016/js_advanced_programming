@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+
+	//location.href='www.wrox.com/?q=javascript&num=10';
+	function getValue(){
+		
+		var qs='q=javascript捡到饭卡&a=10减肥';
+		
+		args={};
+		
+		var arr=[];
+		
+		var arr1=[];
+		
+		arr=qs.split('&');
+		
+		console.log(arr);//["q=javascript", "a=10"]
+		for(var i=0;i<arr.length;i++){
+			arr1=arr[i].split('=');
+			
+			num=decodeURIComponent(arr1[0]);
+			
+			value=decodeURIComponent(arr1[1]);
+			
+			args[num]=value;
+		};
+		
+		
+		return args
+		
+	};
+	console.log(getValue());
+	console.log(args['q']);
+	console.log(args['a']);
+	
+</script>
+	
+
+
+</head>
+
+<body>
+    
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#myDiv{background:red;width:200px;height:200px;}
+
+</style>
+</head>
+
+<body>
+	<div id="myDiv" style="width: 25px; height: 100px; background: #000;border:1px solid blue;"></div>
+    
+	<script>
+	
+		var myDiv=document.getElementById('myDiv');
+		//IE8-不支持
+		/*var computedStyle=document.defaultView.getComputedStyle(myDiv, null);
+		
+		console.log(computedStyle.backgroundColor);
+		
+		console.log(computedStyle.width);
+		
+		console.log(computedStyle.height);*/
+		
+		//只有IE支持的
+		/*var computedStyle = myDiv.currentStyle;
+		
+		console.log(computedStyle.backgroundColor);
+		
+		console.log(computedStyle.width);
+		
+		console.log(computedStyle.height);*/
+		
+		//封装一下函数
+		function getStyle(obj, name){
+			return 	obj.currentStyle?obj.currentStyle[name]:getComputedStyle(obj, null)[name];
+		};
+		console.log(getStyle(myDiv, 'border'));
+		
+    </script>
+</body>
+</html>

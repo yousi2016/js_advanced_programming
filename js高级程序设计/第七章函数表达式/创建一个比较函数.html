@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+	function callSomeFunction(someFunction, someArgument){
+		
+			return someFunction(someArgument);
+			
+	};
+	
+	function add(num){
+		
+		return 	num+10;
+		
+	};
+	
+	var result1=callSomeFunction(add,10);
+	
+	console.log(result1);
+	
+	//从一个函数中返回另一个函数
+	//因为sort(function(a,b){return a-b;});比较函数里面传的是对象的两个值
+	//对于数组的每一个json对象里面都有两个属性两个值，所以得确定按照那个属性得到的值来进行比较
+	function createComprisonFunction(propertyName){
+		
+		return function(object1, object2){
+			
+			var value1=object1[propertyName];
+			
+			var value2=object2[propertyName];
+			
+			if(value1<value2){
+				return -1;	
+			}else if(value1>value2){
+				return 1;
+			}else{
+				return 0;	
+			}	
+		};
+	};
+	
+	var data=[{name:'Zach', age:28},{name:'Ndjk', age:29}];
+	
+	//传递不同的属性得到不同的值，然后根据值进行比较
+	data.sort(createComprisonFunction('name'));
+	
+	console.log(data[0].name);//Ndjk
+	
+	
+	data.sort(createComprisonFunction('age'));
+	
+	console.log(data[0].name);//Zach
+	
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

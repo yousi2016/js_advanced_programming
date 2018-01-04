@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0;padding:0}
+body{background:#c7edcc;height:2000px;}
+input{width:100px;height:30px;}
+</style>
+
+</head>
+
+<body>
+    <script>
+		//创建自定义引用类型（构造函数）的最常见的方式：组合使用构造函数模式和原型模式，构造函数模式用于定义对象实例的自身属性，而原型模式用于定义对象实例共享的方法和属性
+		function EventFunction(){
+					console.log(this)
+		};
+		
+		var EventUtil={
+			//添加事件处理程序
+			addHandler:function(element, type, handler){
+								
+				if(element.addEventListener){
+					element.addEventListener(type, handler, false);	
+				}else if(element.attachEvent){
+					element.attachEvent('on'+type, handler);	
+				}else{
+					element['on'+type]=handler;	
+				}
+			},
+			//获取事件对象
+			getEvent:function(event){
+				return event?event:window.event;	
+			},
+			//获取事件目标
+			getTarget:function(event){
+				return event.target || event.srcElement;	
+			},
+			//取消默认行为
+			preventDefault:function(event){
+				if(event.preventDefault){
+					event.preventDefault();	
+				}else{
+					event.returnValue=false;	
+				}	
+			},
+			//删除事件处理程序
+			removeHandler:function(element, type, handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type, handler, false);	
+				}else if(element.detachEvent){
+					element.detachEvent('on'+type, handler);	
+				}else{
+					element['on'+type]=null;	
+				}
+			},
+			//取消冒泡
+			stopPropagation:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();	
+				}else{
+					event.cancelBubble=true;	
+				}
+			},
+			getClientWidth:function(){
+				
+				return document.documentElement.clientWidth;	
+				
+			},
+			getClientHeight:function(){
+				
+				return document.documentElement.clientHeight;	
+				
+			},
+			getScrollTop:function(event){
+				
+				return document.documentElement.scrollTop || document.body.scrollTop;
+				
+			}
+		};
+		
+		EventFunction.prototype=EventUtil;
+		
+		var eventUtil=new EventFunction();
+		//load事件
+		eventUtil.addHandler(window, 'scroll', function(event){
+			console.log(this);//window;
+			//标准模式
+			if(document.compatMode == 'CSS1Compat'){
+				console.log(document.documentElement.scrollTop);	
+			}else{//混杂模式
+				console.log(document.body.scrollTop);
+			}
+		});
+		
+    </script>
+</body>
+</html>

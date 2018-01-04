@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	var a=1;
+	
+	function aaa(){
+		var b=2;
+		
+		function bbb(){
+			var c=b;
+			b=a;
+			a=c;
+			console.log(a,b,c)
+		}	
+		bbb();
+		console.log(a,b)//2 1
+		console.log(a,b,c)//2 1 c is not defined
+	}
+	aaa();
+	
+	//子执行环境可以访问父执行环境中的变量，反之不能，也就是说内部环境可以访问作用域链中的所有的外部环境，但是外部环境不能访问内部环境中的任何变量和函数，这些环境之间的联系是线性，有次序的，每个环境都可以向上搜索作用域链，已查询变量和函数名
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//组合继承，有时候也叫作伪经典继承，指的是将原型链和借用构造函数的技术组合到一起，从而发挥两者之长的一种继承模式。
+//原理：通过原型链实现对原型对象属性和方法的继承，通过借用构造函数实现对象实例属性的继承
+function SuperType(name, color, age){
+	this.name=name;
+	this.colors=color;	
+	this.age=age;
+};
+SuperType.prototype.sayName=function(){
+	return this.name;	
+};
+function SubType(name, color, age){
+	
+	//通过借用构造函数继承对象实例的属性
+	SuperType.call(this, name, color, age);	
+};
+
+//通过原型链实现对原型对象属性和方法的继承，
+SubType.prototype=new SuperType();
+
+//实例拥有各自不同的属性
+var instance1=new SubType('yousi', '#000', 22);
+
+console.log(instance1.colors);//#000
+
+var instance2=new SubType('xiaojing', '#f0f', 18);
+
+console.log(instance2.colors);//#f0f
+
+console.log(instance1.sayName());//yousi
+
+console.log(instance2.sayName());//xiaojing
+
+console.log(instance1 instanceof Object);//true
+
+console.log(instance1 instanceof SubType);//true
+
+console.log(instance1 instanceof SuperType);//true
+
+console.log( SubType.prototype.isPrototypeOf(instance1) );//true
+
+console.log( SubType.prototype.isPrototypeOf(instance2) );//true
+
+console.log( SuperType.prototype.isPrototypeOf(instance1) );//true
+
+console.log( Object.prototype.isPrototypeOf(instance1) );//true
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

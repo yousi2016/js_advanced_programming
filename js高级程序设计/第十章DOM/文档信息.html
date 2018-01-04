@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<body></body>
+</html>
+<script>
+	//取得文档标题
+	var originalTitle=document.title;
+	
+	console.log(originalTitle);
+	
+	//设置文档标题
+	document.title='New page title';
+	
+	//取得完整的URL
+	var url=document.URL;
+	
+	console.log(url);//http://localhost/js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E7%AC%AC%E5%8D%81%E7%AB%A0DOM/%E6%96%87%E6%A1%A3%E4%BF%A1%E6%81%AF.html
+	
+	//取得域名
+	var domain=document.domain;
+	
+	console.log(domain);//localhost
+	
+	//取得来源页面的URL
+	var referrer=document.referrer;
+	
+	console.log(referrer);//http://localhost/js%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E7%AC%AC%E5%8D%81%E7%AB%A0DOM
+	
+	//假设页面来自p2p.wrox.com域
+	//document.domain='baidu.com';//无法设置'文件'的'域'属性：“baidu.com”不是“本地主机”的后缀。即使不能将这个属性设置为URL中不包含的域
+	
+	//document.domain='baidu.com';
+	
+	//当页面中包含来自其他子域的框架或内嵌框架时，能够设置document.domain就非常方便了。由于跨域安全限制，来自不同子域的页面无法通过js通信。而通过将每个页面的document.domain设置为相同的值，这些页面就可以互相访问对方包含的js对象了,假设有一个页面加载自www.wrox.com 其中包含一个内嵌框架，框架内的页面加载自p2p.wrox.com,由于document.domain字符串不一样,
+//内外两个页面之间无法相互访问对方的js对象，但是如果将这两个页面的document.domain值都设置为wrox.com,它们之间就可以通信了
+	//跨域：1.jsonp 2.document.domain
+	
+	//浏览器对domain属性还有一个限制，即如果域名一开始是松散的，那不能将它在设置为紧绷的。换句话说，在将document.domain设置为wrox.com之后，就不能再将其设置回p2p.wrox.com,否则将会导致错误
+	//eg:
+	//假设页面来自于p2p.wrox.com域
+	document.domain = 'wrox.com';//松散的(成功);
+	
+	document.domain = 'p2p.wrox.com';//紧绷的(出错！);
+	
+	//所有浏览器中都存在这个限制，但IE8首先实现的
+	
+	
+	
+</script>
+	

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#000;}
+#c1{background:#fff; width:400px;height:400px;}/*宽高写在这里就会有问题*/
+</style>
+<script>
+window.onload = function(){
+	
+	
+	var oC=document.getElementById('c1');
+	
+	//绘制环境相当于画板
+	//oC.getContext('3d');//3d立体图像现在还没有完全实现，可以用webgl来代替
+	var oGC=oC.getContext('2d');
+	
+	function draw(){
+		
+		var x=200, 
+			
+			y=200,
+			
+			r=100;
+		
+		//获取时间对象
+		var date=new Date();
+		
+		var iH=date.getHours();
+		
+		var iM=date.getMinutes();
+		
+		var iS=date.getSeconds();
+		
+		console.log(iH+':'+iM+':'+iS);
+		
+		
+		//分针刻度
+		for(var i=0;i<60;i++){
+			
+			//开始绘制路径
+			oGC.beginPath();
+			
+			oGC.moveTo(x, y);
+			
+			oGC.arc(x, y, r, i*6*Math.PI/180, (i+1)*6*Math.PI/180, false);
+			//闭合绘制路径(将最后一个点和第一个点连接)
+			oGC.closePath();
+			//最终将所有路径用实线描绘一边
+			oGC.stroke();	
+		};
+		
+		//画一个覆盖的圆
+		oGC.save();
+		
+			oGC.beginPath();
+			
+				oGC.moveTo(x, y);
+				
+				oGC.arc(x, y, r*0.95, 0, 360*Math.PI/180, false);
+				
+			oGC.closePath();
+			
+			oGC.fillStyle='#fff';
+			
+			oGC.fill();	
+			
+		oGC.restore();
+		
+		//时针刻度
+		for(var i=0;i<12;i++){
+			
+			//开始绘制路径
+			oGC.beginPath();
+			
+			oGC.moveTo(x, y);
+			
+			oGC.arc(x, y, r, i*30*Math.PI/180, (i+1)*30*Math.PI/180, false);
+			//闭合绘制路径(将最后一个点和第一个点连接)
+			oGC.closePath();
+			//最终将所有路径用实线描绘一边
+			oGC.stroke();	
+		};
+		
+		//画一个覆盖的圆
+		oGC.save();
+		
+			oGC.beginPath();
+			
+				oGC.moveTo(x, y);
+				
+				oGC.arc(x, y, r*0.85, 0, 360*Math.PI/180, false);
+	
+			oGC.closePath();
+			
+			oGC.fillStyle='#fff';
+			
+			oGC.fill();	
+			
+		oGC.restore();
+		
+		oGC.save();
+			//画秒针
+			oGC.beginPath();
+				
+				oGC.lineWidth='2';
+				
+				oGC.moveTo(x, y);
+									 //这里的角度必须减去90才能和实际的时钟走的角度一样
+				oGC.arc(x, y, r*0.9, (iS*6-90)*Math.PI/180, (iS*6-90)*Math.PI/180, false);
+	
+			oGC.closePath();
+			
+			oGC.stroke();	
+			
+		oGC.restore();
+		
+		oGC.save();
+		
+			//画分针
+			oGC.beginPath();
+				
+				oGC.lineWidth='4';
+				
+				oGC.moveTo(x, y);
+				
+				oGC.arc(x, y, r*0.8, (iM*6-90)*Math.PI/180, (iM*6-90)*Math.PI/180, false);
+	
+			oGC.closePath();
+			
+			oGC.stroke();	
+			
+		oGC.restore();
+		
+		
+		//画时针
+		oGC.save();
+			
+			oGC.beginPath();
+				
+				oGC.lineWidth='7';
+				
+				oGC.moveTo(x, y);
+				
+				oGC.arc(x, y, r*0.7, (iH*30-90)*Math.PI/180, (iH*30-90)*Math.PI/180, false);
+	
+			oGC.closePath();
+			
+			oGC.stroke();	
+			
+		oGC.restore();
+		
+			
+	};
+	
+	draw();
+	
+	setInterval(function(){
+		draw();	
+	}, 1000);
+};
+</script>
+</head>
+
+<body>
+	<canvas id="c1" width="400" height="400">不支持canvas的浏览器显示的内容</canvas><!--默认宽度：300默认高度：150透明度：０（完全透明）-->
+</body>
+</html>
+
+
+

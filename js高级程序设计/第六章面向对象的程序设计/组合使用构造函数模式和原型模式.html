@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	//创建自定义类型的最常见的方式：组合使用构造函数模式和原型模式。构造函数模式用于定义实例属性，而原型模式用于定义方法和共享的属性。结果每个实例都会有自己的一份实例属性的副本，
+	//但同时又共享着对方法的引用，最大限度的节省了内存。这种混成模式还支持向构造函数传递参数；可谓是集成两种模式之长
+	
+	function Person(name, age, job){
+		
+		console.log(this);//Person {}
+		this.name=name;
+		
+		this.age=age;
+		
+		this.job=job;
+		
+		this.friends=['a', 'b'];	
+		console.log(this);
+	};
+	
+	Person.prototype={
+		
+		constructor:Person,
+		
+		sayName: function(){
+			console.log(this);
+			console.log(this.name);	
+		}	
+	};
+	
+	var person1=new Person('blue', 18, 'daza');
+	
+	var person2=new Person('luxi', 20, 'student');
+	
+	person1.friends.push('c');
+	
+	console.log(person1.friends);//["a", "b", "c"]
+	
+	console.log(person2.friends);//["a", "b"]
+	
+	console.log(person1.friends == person2.friends);//false
+	
+	console.log(person1.sayName()===person2.sayName());//true
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

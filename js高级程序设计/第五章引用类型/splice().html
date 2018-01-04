@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	
+	var arr=[1,2,3,4,5];
+	//删除：splice(要删除的第一项的位置，要删除的项数);返回删除的项组成的数组
+	console.log(arr.splice(1,2));//[2, 3]
+	console.log(arr)//[1, 4, 5]
+	//插入：splice(起始位置，0（要删除0项），要插入的项);
+	console.log(arr.splice(2,0,8,9,'jdfka',null))//[];
+	
+	console.log(arr);//[1, 4, 8, 9, "jdfka", null, 5]
+	
+	//替换:插入两项，删除一项
+	
+	console.log(arr.splice(1,1,'meinv','shuaige'));//[4]
+	console.log(arr);//[1, "meinv", "shuaige", 8, 9, "jdfka", null, 5]
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>

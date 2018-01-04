@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+	/*function Person(){
+		
+	};
+	
+	var p1=new Person();
+	Person.prototype.showName=function(){
+		console.log(88)	
+	}
+	console.log(Person.prototype);//Person {}
+	console.log(Person.prototype.showName);//undefined
+	console.log(Person.prototype.constructor);
+	Person.prototype={//重写了原型对象，不是原来的了
+		name: 'blue',
+		age: 18,
+		job: 'daza',
+		showName: function(){
+			console.log(this.name);	
+		}
+	};
+	console.log(Person.prototype.constructor);
+	p1.showName();//p1的内部属性[[Prototype]]永远只会指向原先的原型对象，而不会指向新的原型对象*/
+	function Person(){
+		
+	};
+	//var p1=new Person();
+	Person.prototype={//重写了原型对象，不是原来的了
+		name: 'blue',
+		age: 18,
+		job: 'daza',
+		showName: function(){
+			console.log(this.name);	
+		}
+	};
+	
+	var p1=new Person();//这样就可以继承新的原型对象的属性了
+	
+	p1.showName();
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
+ 

@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+	function doAdd(num1, num2){
+		arguments[1]=20;
+		console.log(arguments[0]);//10
+		console.log(arguments[1]);//20
+		
+		console.log(num1);//10
+		console.log(num2);//undefined 原因：argument.length==1，(由传入的实参决定的)只有实参arguments[0]反映到对应的形参num1上面，arguments[1]不反映到num2
+	};
+	//doAdd(10);
+	doAdd(30, 10);
+	
+</script>
+</head>
+
+<body>
+</body>
+</html>
